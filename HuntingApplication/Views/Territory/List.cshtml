@@ -1,0 +1,45 @@
+﻿@using HuntingModel.Localization
+
+<h2>@TerritoryRes.TITLE_LIST</h2>
+<div>
+    <div id="div-territory-list">
+    </div>
+    <div>
+        <span>@HomeRes.LABEL_TERRITORY_LOGIN</span>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        function LoadData(index) {
+            var searchField = $('#territory-list-search');
+            var searchString = '';
+            if (searchField.length > 0) {
+                searchString = searchField.val();
+            }
+            $.ajax({
+                type: "POST",
+                url: BASEPATH + "Territory/ListAjax",
+                data: { pageIndex: index, searchString: searchString },
+            }).done(function (data) {
+                $("#div-territory-list").html(data);
+            });
+        }
+
+        function searchClick() {
+            LoadData(0);
+        }
+
+        function pageIndexClick() {
+            var pageIndex = $(this).data('page');
+            LoadData(pageIndex);
+        }
+
+        $(document).ready(function () {
+            LoadData(0);
+            $('#div-territory-list').on("click", "#search-territory-list", searchClick);
+            $('#div-territory-list').on("click", ".page-index", pageIndexClick);
+        });
+    </script>
+}

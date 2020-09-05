@@ -1,0 +1,7 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.TerritoryDetailViewModel
+
+<h2>@Model.Name</h2>
+<p>
+    @Html.ActionLink(GlobalRes.BUTTON_BACK, "List", "Territory", null, new { @class = "btn btn-default" })
+</p>

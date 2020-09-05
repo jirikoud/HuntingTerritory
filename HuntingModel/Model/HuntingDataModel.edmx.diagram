@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b30e191e61624a05adfe17fdbc4cfdab" Name="Diagram1">
+        <EntityTypeShape EntityType="HuntingModel.ModelVersion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingModel.Territory" Width="1.5" PointX="9" PointY="8" />
+        <EntityTypeShape EntityType="HuntingModel.HunterUser" Width="1.5" PointX="4.375" PointY="8.75" />
+        <EntityTypeShape EntityType="HuntingModel.TerritoryUser" Width="1.5" PointX="6" PointY="5.625" />
+        <AssociationConnector Association="HuntingModel.FK_Territory_Steward" />
+        <AssociationConnector Association="HuntingModel.FK_TerritoryUser_User" />
+        <AssociationConnector Association="HuntingModel.FK_TerritoryUser_Territory" />
+        <EntityTypeShape EntityType="HuntingModel.HuntingGround" Width="1.5" PointX="11.375" PointY="11.875" />
+        <EntityTypeShape EntityType="HuntingModel.MapItem" Width="1.5" PointX="11.375" PointY="8.75" />
+        <AssociationConnector Association="HuntingModel.FK_HuntingGround_Territory" />
+        <AssociationConnector Association="HuntingModel.FK_MapItem_Territory" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

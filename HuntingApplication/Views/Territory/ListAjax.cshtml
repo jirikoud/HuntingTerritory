@@ -1,0 +1,37 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.TerritoryListViewModel
+@{
+    Layout = null;
+}
+
+<table class="territory-list">
+    <thead>
+        <tr>
+            <th>
+                <span>@TerritoryRes.HEADER_LIST_NAME</span>
+            </th>
+            <th>
+                <input id="territory-list-search" type="text" placeholder="@TerritoryRes.PLACEHOLDER_SEARCH" value="@Model.SearchString" />
+                <input type="button" id="search-territory-list" value="@TerritoryRes.BUTTON_SEARCH" />
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var itemModel in Model.ItemList)
+    {
+        <tr>
+            <td>@itemModel.Name</td>
+            <td>@Html.ActionLink(TerritoryRes.BUTTON_SHOW, "Show", new { id = itemModel.Id }, new { @class = "btn button-default" })</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<div class="pager">
+    <span>@GlobalRes.LABEL_PAGER</span>
+    <input class="btn btn-default page-index" type="button" data-page="@Model.Pager.PageIndexFirst" @(Model.Pager.IsPrevPage ? null : "disabled=disabled") value="@GlobalRes.BUTTON_PAGE_FIRST" />
+    <input class="btn btn-default page-index" type="button" data-page="@Model.Pager.PageIndexPrev" @(Model.Pager.IsPrevPage ? null : "disabled=disabled") value="@GlobalRes.BUTTON_PAGE_PREV" />
+    <span>@Model.Pager.CurrentPage / @Model.Pager.TotalPage</span>
+    <input class="btn btn-default page-index" type="button" data-page="@Model.Pager.PageIndexNext" @(Model.Pager.IsNextPage ? null : "disabled=disabled") value="@GlobalRes.BUTTON_PAGE_NEXT" />
+    <input class="btn btn-default page-index" type="button" data-page="@Model.Pager.PageIndexLast" @(Model.Pager.IsNextPage ? null : "disabled=disabled") value="@GlobalRes.BUTTON_PAGE_LAST" />
+</div>
+

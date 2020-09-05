@@ -1,0 +1,14 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.TerritoryMapSavedViewModel
+@{
+    Layout = null;
+}
+@if (Model.IsSuccess)
+{
+    @TerritoryRes.LABEL_MAP_UPDATE_SUCCESS
+    <div class="new-hunting-ids" data-new-ids="@Model.NewIdString"></div>
+}
+else
+{
+    @TerritoryRes.LABEL_MAP_UPDATE_FAIL
+}

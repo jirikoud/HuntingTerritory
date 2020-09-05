@@ -1,0 +1,64 @@
+﻿@using HuntingModel.Localization 
+@model HuntingModel.ViewModel.HomeViewModel
+
+<div class="jumbotron">
+    <h1>@GlobalRes.TITLE_APPLICATION</h1>
+    <p class="lead">@GlobalRes.SUBTITLE_APPLICATION</p>
+@*    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@HomeRes.TITLE_TERRITORY</h2>
+        @if (Model.IsUserLogged)
+        {
+            if (Model.StewardList.Count == 0 && Model.HunterList.Count == 0)
+            {
+                <p>
+                    @HomeRes.LABEL_TERRITORY_LOGGED
+                </p>
+            }
+            else
+            {
+                if (Model.StewardList.Count > 0)
+                {
+                <p>
+                    @HomeRes.LABEL_STEWARD
+                    <ul>
+                        @foreach (var territory in Model.StewardList)
+                        {
+                            <li>@Html.ActionLink(territory.Name, "Detail", "Territory", new { id = territory.Id}, null)</li>
+                        }
+                    </ul>
+                </p>
+                }
+                if (Model.HunterList.Count > 0)
+                {
+                    <p>
+                        @HomeRes.LABEL_HUNTER
+                        <ul>
+                            @foreach (var territory in Model.HunterList)
+                            {
+                                <li>@Html.ActionLink(territory.Name, "Detail", "Territory", new { id = territory.Id }, null)</li>
+                            }
+                        </ul>
+                    </p>
+                }
+            }
+            <p>
+                @Html.ActionLink(TerritoryRes.BUTTON_CREATE, "Create", "Territory", null, new { @class = "btn btn-default" })
+                @Html.ActionLink(TerritoryRes.BUTTON_CONTACT, "Contact", "Territory", null, new { @class = "btn btn-default" })
+            </p>
+        }
+        else
+        {
+            <p>
+                @Html.Raw(string.Format(HomeRes.LABEL_TERRITORY_INFO, GlobalRes.TITLE_APPLICATION))<br/>
+                @HomeRes.LABEL_TERRITORY_LOGIN
+            </p>
+            <p>
+                @Html.ActionLink(TerritoryRes.BUTTON_LIST, "List", "Territory", null, new { @class = "btn btn-default" })
+            </p>
+        }
+    </div>
+</div>
