@@ -1,0 +1,18 @@
+﻿@model HuntingModel.ViewModel.ActionModel
+
+@if (Model != null)
+{
+    <text>
+        <script>
+        //<![CDATA[
+        var alertClass = '@Model.ActionType';
+        var alertText = '@Model.ActionMessage';
+        $(document).ready(function(){
+            $('#alertWindow_id').show().addClass(alertClass);
+            $('#alertWindow_id .alertText').html(alertText);
+            $("#alertWindow_id").delay(3500).fadeOut(750);
+        });
+        //]]>
+        </script>
+    </text>
+}

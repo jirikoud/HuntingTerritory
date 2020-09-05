@@ -1,12 +1,10 @@
 ﻿@using HuntingModel.Localization
-@model HuntingModel.ViewModel.TerritoryMapSavedViewModel
-@{
-    Layout = null;
-}
+@model HuntingModel.ViewModel.TerritoryModels.TerritoryMapSavedModel
+
 @if (Model.IsSuccess)
 {
     @TerritoryRes.LABEL_MAP_UPDATE_SUCCESS
-    <div class="new-hunting-ids" data-new-ids="@Model.NewIdString"></div>
+    <div id="map-data-ids" data-area-ids="@Model.MapAreaIdString" data-item-ids="@Model.MapItemIdString"></div>
 }
 else
 {

@@ -1,0 +1,15 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.QuestionnaireModels.QuestionnaireUpdateModel
+@{
+    ViewBag.Title = QuestionnaireRes.PAGE_TITLE_UPDATE;
+}
+
+<h2>@QuestionnaireRes.PAGE_TITLE_UPDATE</h2>
+<h4>@QuestionnaireRes.LABEL_UPDATE_INFO</h4>
+<hr />
+
+@Html.Partial("~/Views/Questionnaire/CommonLayout/PartialUpdate.cshtml", Model)
+
+@section scripts {
+    @Html.Partial("~/Views/Questionnaire/CommonLayout/PartialUpdateScripts.cshtml", Model)
+}

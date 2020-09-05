@@ -1,0 +1,8 @@
+﻿@model HuntingModel.ViewModel.AccountModels.LanguageListModel
+
+<ul class="nav navbar-nav navbar-right">
+    @foreach (var language in Model.LanguageList)
+    {
+        <li>@Html.LanguageLink(language.Code, language.Name)</li>
+    }
+</ul>

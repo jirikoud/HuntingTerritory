@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCOUNT_TYPE_ADMIN" xml:space="preserve">
+    <value>Administrátor</value>
+  </data>
+  <data name="ACCOUNT_TYPE_DEMO" xml:space="preserve">
+    <value>Demo</value>
+  </data>
+  <data name="ACCOUNT_TYPE_PAYING" xml:space="preserve">
+    <value>Placený</value>
+  </data>
+  <data name="ACCOUNT_TYPE_STANDARD" xml:space="preserve">
+    <value>Běžný</value>
+  </data>
+  <data name="BUTTON_CHANGE_PASSWORD" xml:space="preserve">
+    <value>Změnit heslo</value>
+  </data>
+  <data name="BUTTON_CONFIRM" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="BUTTON_DEMO_LOGIN" xml:space="preserve">
+    <value>Přihlásit k demo účtu</value>
+  </data>
+  <data name="BUTTON_FORGOTTEN_PASSWORD" xml:space="preserve">
+    <value>Zapomenuté heslo</value>
+  </data>
+  <data name="BUTTON_LOGIN" xml:space="preserve">
+    <value>Přihlásit se</value>
+  </data>
+  <data name="BUTTON_LOGIN_LINK" xml:space="preserve">
+    <value>Přihlásit se</value>
+  </data>
+  <data name="BUTTON_LOGOFF" xml:space="preserve">
+    <value>Odhlásit se</value>
+  </data>
+  <data name="BUTTON_MANAGE" xml:space="preserve">
+    <value>Spravovat účet</value>
+  </data>
+  <data name="BUTTON_REGISTER" xml:space="preserve">
+    <value>Registrace</value>
+  </data>
+  <data name="BUTTON_REGISTER_LINK" xml:space="preserve">
+    <value>Registrovat se jako nový uživatel</value>
+  </data>
+  <data name="DETAIL_CONFIRM_PASSWORD" xml:space="preserve">
+    <value>Potvrdit heslo</value>
+  </data>
+  <data name="DETAIL_EMAIL" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="DETAIL_PASSWORD" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="DETAIL_REMEMBER_ME" xml:space="preserve">
+    <value>Pamatovat si mě</value>
+  </data>
+  <data name="ERROR_CODE_INVALID" xml:space="preserve">
+    <value>Váš emailový kód je neplatný nebo prošlý</value>
+  </data>
+  <data name="ERROR_FORGOTTEN_PASSWORD_ADMIN" xml:space="preserve">
+    <value>Tato funkcionalita není povolena pro administrátorský účet. Kontaktuj vývojáře :)</value>
+  </data>
+  <data name="ERROR_LOGIN_DEMO" xml:space="preserve">
+    <value>Chyba během přihlašování</value>
+  </data>
+  <data name="LABEL_CHANGE_PASSWORD_INFO" xml:space="preserve">
+    <value>Heslo musí být dlouhé 8 až 30 znaků</value>
+  </data>
+  <data name="LABEL_CONFIRM_INFO" xml:space="preserve">
+    <value>Potvrďte e-mailovou adresu a nastavte si heslo. Heslo musí být dlouhé 8 až 30 znaků.</value>
+  </data>
+  <data name="LABEL_FORGOTTEN_PASSWORD_CONFIRM_INFO" xml:space="preserve">
+    <value>Zadejte nové heslo. Heslo musí být dlouhé 8 až 30 znaků.</value>
+  </data>
+  <data name="LABEL_FORGOTTEN_PASSWORD_INFO" xml:space="preserve">
+    <value>Zadejte svou e-mailovou adresu. Pokud je u nás zaregistrována, bude na ní odeslán e-mail s instrukcemi.</value>
+  </data>
+  <data name="LABEL_HELLO_FORMAT" xml:space="preserve">
+    <value>Vítej {0}!</value>
+  </data>
+  <data name="LABEL_LOCKOUT_LINE1" xml:space="preserve">
+    <value>Uzamčený účet</value>
+  </data>
+  <data name="LABEL_LOCKOUT_LINE2" xml:space="preserve">
+    <value>Přihlašování k tomuto účtu bylo z bezpečnostních důvodů uzamčeno. Zkuste to prosím později.</value>
+  </data>
+  <data name="LABEL_LOGIN_ERROR_LINE1" xml:space="preserve">
+    <value>Chyba přihlašování</value>
+  </data>
+  <data name="LABEL_LOGIN_ERROR_LINE2" xml:space="preserve">
+    <value>Došlo k nespecifikované chybě během přihlašování, prosím zkuste to později.</value>
+  </data>
+  <data name="LABEL_LOGIN_INFO" xml:space="preserve">
+    <value>Použít lokální účet pro přihlášení</value>
+  </data>
+  <data name="LABEL_REGISTER_ERROR_LINE1" xml:space="preserve">
+    <value>Chyba registrace</value>
+  </data>
+  <data name="LABEL_REGISTER_ERROR_LINE2" xml:space="preserve">
+    <value>Během registrace došlo k nespecifikované chybě. Zkuste to prosím později.</value>
+  </data>
+  <data name="LABEL_REGISTER_INFO" xml:space="preserve">
+    <value>Založit nový účet</value>
+  </data>
+  <data name="LABEL_TERRITORY_COUNT_UNLIMITED" xml:space="preserve">
+    <value>Neomezeně</value>
+  </data>
+  <data name="PAGE_TITLE_CHANGE_PASSWORD" xml:space="preserve">
+    <value>Změna hesla</value>
+  </data>
+  <data name="PAGE_TITLE_CONFIRM" xml:space="preserve">
+    <value>Potvrďte e-mailovou adresu</value>
+  </data>
+  <data name="PAGE_TITLE_FORGOTTEN_PASSWORD" xml:space="preserve">
+    <value>Zapomenuté heslo</value>
+  </data>
+  <data name="PAGE_TITLE_FORGOTTEN_PASSWORD_CONFIRM" xml:space="preserve">
+    <value>Nové heslo</value>
+  </data>
+  <data name="PAGE_TITLE_LOCKOUT" xml:space="preserve">
+    <value>Uzamčený účet</value>
+  </data>
+  <data name="PAGE_TITLE_LOGIN" xml:space="preserve">
+    <value>Přihlášení</value>
+  </data>
+  <data name="PAGE_TITLE_LOGIN_ERROR" xml:space="preserve">
+    <value>Chyba přihlašování</value>
+  </data>
+  <data name="PAGE_TITLE_MANAGE" xml:space="preserve">
+    <value>Nastavení účtu</value>
+  </data>
+  <data name="PAGE_TITLE_REGISTER" xml:space="preserve">
+    <value>Registrace uživatele</value>
+  </data>
+  <data name="PAGE_TITLE_REGISTER_ERROR" xml:space="preserve">
+    <value>Chyba registrace</value>
+  </data>
+  <data name="REQUIRED_FORGOTTEN_EMAIL" xml:space="preserve">
+    <value>Musíte vyplnit svou e-mailovou adresu</value>
+  </data>
+  <data name="SUCCESS_CONFIRM" xml:space="preserve">
+    <value>Váš účet byl úspěšně aktivován</value>
+  </data>
+  <data name="SUCCESS_FORGOTTEN_PASSWORD" xml:space="preserve">
+    <value>Pokud zadaný účet existuje, byl vám odeslán e-mail s instrukcemi</value>
+  </data>
+  <data name="SUCCESS_LOGIN_DEMO" xml:space="preserve">
+    <value>Jste přihlášen jako demo účet</value>
+  </data>
+  <data name="SUCCESS_PASSWORD_CHANGED" xml:space="preserve">
+    <value>Vaše heslo bylo změněno</value>
+  </data>
+  <data name="VALIDATION_LOGIN_INVALID" xml:space="preserve">
+    <value>Neplatný pokus o přihlášení</value>
+  </data>
+  <data name="VALIDATION_REGISTER_USED" xml:space="preserve">
+    <value>Tato e-mailová adresa je již v aplikaci registrována.</value>
+  </data>
+</root>

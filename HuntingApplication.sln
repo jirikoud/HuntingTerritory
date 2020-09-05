@@ -1,25 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingApplication", "HuntingApplication\HuntingApplication.csproj", "{AD9720BF-2E28-4920-8F62-12E6560B3C40}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingModel", "HuntingModel\HuntingModel.csproj", "{05ADE1CF-B7EF-426E-8AB4-5933BF6B1295}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingWebJob", "HuntingWebJob\HuntingWebJob.csproj", "{F6DB045B-1119-4DC2-A38E-0E1924D2E9B1}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://chromium.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = HuntingApplication\\HuntingApplication.csproj
-		SccProjectName1 = HuntingApplication
-		SccLocalPath1 = HuntingApplication
-		SccProjectUniqueName2 = HuntingModel\\HuntingModel.csproj
-		SccProjectName2 = HuntingModel
-		SccLocalPath2 = HuntingModel
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -33,8 +23,27 @@ Global
 		{05ADE1CF-B7EF-426E-8AB4-5933BF6B1295}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05ADE1CF-B7EF-426E-8AB4-5933BF6B1295}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05ADE1CF-B7EF-426E-8AB4-5933BF6B1295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DB045B-1119-4DC2-A38E-0E1924D2E9B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DB045B-1119-4DC2-A38E-0E1924D2E9B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DB045B-1119-4DC2-A38E-0E1924D2E9B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DB045B-1119-4DC2-A38E-0E1924D2E9B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://chromium.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HuntingApplication\\HuntingApplication.csproj
+		SccProjectName1 = HuntingApplication
+		SccLocalPath1 = HuntingApplication
+		SccProjectUniqueName2 = HuntingModel\\HuntingModel.csproj
+		SccProjectName2 = HuntingModel
+		SccLocalPath2 = HuntingModel
+		SccProjectUniqueName3 = HuntingWebJob\\HuntingWebJob.csproj
+		SccProjectName3 = HuntingWebJob
+		SccLocalPath3 = HuntingWebJob
 	EndGlobalSection
 EndGlobal

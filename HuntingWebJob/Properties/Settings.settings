@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HuntingWebJob.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EmailSenderWaitSec" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="EmailSenderDefaultAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">chromium@seznam.cz</Value>
+    </Setting>
+    <Setting Name="AclUserWaitSec" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3600</Value>
+    </Setting>
+    <Setting Name="DemoAccountWaitSec" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1800</Value>
+    </Setting>
+    <Setting Name="TestServerEmail" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jiri_koudelka@yahoo.co.uk</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

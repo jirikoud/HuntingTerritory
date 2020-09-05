@@ -1,0 +1,83 @@
+﻿@using HuntingModel.Localization
+@using HuntingModel.SqlGenerator.Generators
+@using HuntingModel.ViewModel.AdminModels
+@model AclUserPageModel
+@{
+    ViewBag.Title = AdminRes.PAGE_TITLE_ADMIN;
+}
+<h2>@AdminRes.PAGE_TITLE_USER_LIST</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <p>@GlobalRes.LABEL_TABLE_TOTAL&nbsp;<b>@Model.ListModel.TotalCount</b></p>
+        </div>
+        <table class="table table-data table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="sort-title">@AdminRes.COLUMN_ACL_USER_EMAIL</span>
+                        <span class="sort">
+                            @Html.SortingLink(AclUserFilter.SORT_EMAIL, "Index", true, Model.Filter)
+                            @Html.SortingLink(AclUserFilter.SORT_EMAIL, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span class="sort-title">@AdminRes.COLUMN_ACL_USER_FULLNAME</span>
+                        <span class="sort">
+                            @Html.SortingLink(AclUserFilter.SORT_FULLNAME, "Index", true, Model.Filter)
+                            @Html.SortingLink(AclUserFilter.SORT_FULLNAME, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span class="sort-title">@AdminRes.COLUMN_ACL_USER_ACCOUNT_TYPE</span>
+                        <span class="sort">
+                            @Html.SortingLink(AclUserFilter.SORT_ACCOUNT_TYPE, "Index", true, Model.Filter)
+                            @Html.SortingLink(AclUserFilter.SORT_ACCOUNT_TYPE, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">@AdminRes.COLUMN_ACL_USER_TERRITORY_COUNT</th>
+                    <th class="text-center">
+                        <span class="sort-title">@AdminRes.COLUMN_ACL_USER_IS_DISABLED</span>
+                        <span class="sort">
+                            @Html.SortingLink(AclUserFilter.SORT_IS_DISABLED, "Index", true, Model.Filter)
+                            @Html.SortingLink(AclUserFilter.SORT_IS_DISABLED, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">@GlobalRes.COLUMN_ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ListModel.ListItem.Count == 0)
+                {
+                    <tr class="no-data"><td colspan="6">@GlobalRes.LABEL_TABLE_EMPTY</td></tr>
+                }
+                else
+                {
+                    foreach (var item in Model.ListModel.ListItem)
+                    {
+                        <tr>
+                            <td>@item.Email</td>
+                            <td>@item.Fullname</td>
+                            <td>@item.AccountType</td>
+                            <td>@item.CurrentTerritoryCount / @item.MaxTerritoryCount</td>
+                            <td>@(item.IsDisabled ? GlobalRes.BOOL_VALUE_TRUE : GlobalRes.BOOL_VALUE_FALSE)</td>
+                            <td class="edit text-center">
+                                @Html.ActionLink("Detail", "UserDetail", "Admin", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @if (Model.Pager != null)
+        {
+            @Html.Partial("~/Views/Shared/PartialPager.cshtml", Model.Pager)
+        }
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @Html.ActionLink(GlobalRes.BUTTON_CREATE, "UserUpdate", "Admin", new { }, new { @class = "btn btn-info btn-md" })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@using HuntingModel.Localization
+
+@model HuntingModel.ViewModel.AdminModels.AclUserUpdateModel
+@{
+    ViewBag.Title = AdminRes.PAGE_TITLE_ADMIN;
+}
+
+<h2>@(Model.IsCreate ? AdminRes.PAGE_TITLE_USER_CREATE : AdminRes.PAGE_TITLE_USER_UPDATE)</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("UserUpdate", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsCreate)
+                @Html.CustomValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fullname, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Fullname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountType, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.AccountType, Model.AccountTypeSelectList, new { id = "account-type", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group collapse" id="row-max-count">
+                    @Html.LabelFor(model => model.MaxTerritoryCount, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.MaxTerritoryCount, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaxTerritoryCount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@GlobalRes.BUTTON_SAVE" class="btn btn-info" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @if (Model.IsCreate)
+            {
+                @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Admin", new { }, new { @class = "btn btn-default btn-md" })
+            }
+            else
+            {
+                @Html.ActionLink(GlobalRes.BUTTON_BACK, "UserDetail", "Admin", new { id = Model.Id }, new { @class = "btn btn-default btn-md" })
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function processMaxCountRow() {
+            var value = $(this).val();
+            if (value === "Payed" || value === "Demo") {
+                $('#row-max-count').fadeIn('slow');
+            } else {
+                $('#row-max-count').fadeOut('slow');
+            }
+        }
+
+        $(function () {
+            $('#account-type').each(processMaxCountRow).on('change', processMaxCountRow);
+        });
+    </script>
+}

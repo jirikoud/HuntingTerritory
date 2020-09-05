@@ -1,0 +1,15 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.CheckInModels.CheckInUpdateModel
+@{
+    ViewBag.Title = CheckInRes.PAGE_TITLE_CREATE;
+}
+
+<h2>@CheckInRes.PAGE_TITLE_CREATE</h2>
+<h4>@CheckInRes.LABEL_CREATE_INFO</h4>
+<hr />
+
+@Html.Partial("~/Views/CheckIn/CommonLayout/PartialUpdate.cshtml", Model)
+
+@section scripts {
+    @Html.Partial("~/Views/CheckIn/CommonLayout/PartialUpdateScripts.cshtml", Model)
+}

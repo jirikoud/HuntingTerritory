@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,101 +59,149 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="BUTTON_ABOUT" xml:space="preserve">
-    <value>O aplikaci</value>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="BOOL_VALUE_FALSE" xml:space="preserve">
+    <value>No</value>
   </data>
-  <data name="BUTTON_BACK" xml:space="preserve">
-    <value>Zpět</value>
+	<data name="BOOL_VALUE_TRUE" xml:space="preserve">
+    <value>Yes</value>
   </data>
-  <data name="BUTTON_CHANGE_PASSWORD" xml:space="preserve">
-    <value>Změnit heslo</value>
+	<data name="BUTTON_ABORT" xml:space="preserve">
+    <value>Abort</value>
   </data>
-  <data name="BUTTON_CONTACT" xml:space="preserve">
-    <value>Kontakt</value>
+	<data name="BUTTON_ABOUT" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="BUTTON_HOME" xml:space="preserve">
-    <value>Úvod</value>
+	<data name="BUTTON_BACK" xml:space="preserve">
+    <value>Back</value>
   </data>
-  <data name="BUTTON_PAGE_FIRST" xml:space="preserve">
-    <value>&lt;&lt;</value>
+	<data name="BUTTON_CONTACT" xml:space="preserve">
+    <value>Contact</value>
   </data>
-  <data name="BUTTON_PAGE_LAST" xml:space="preserve">
-    <value>&gt;&gt;</value>
+	<data name="BUTTON_CREATE" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="BUTTON_PAGE_NEXT" xml:space="preserve">
-    <value>&gt;</value>
+	<data name="BUTTON_DELETE" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="BUTTON_PAGE_PREV" xml:space="preserve">
-    <value>&lt;</value>
+	<data name="BUTTON_DETAIL" xml:space="preserve">
+    <value>Detail</value>
   </data>
-  <data name="LABEL_PAGER" xml:space="preserve">
-    <value>Strana:</value>
+	<data name="BUTTON_HOME" xml:space="preserve">
+    <value>Home</value>
   </data>
-  <data name="LABEL_WELCOME" xml:space="preserve">
-    <value>Vítej {0}!</value>
+	<data name="BUTTON_OK" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="SUBTITLE_APPLICATION" xml:space="preserve">
-    <value>Aplikace pro lovce a správce revírů</value>
+	<data name="BUTTON_RESET_FILTER" xml:space="preserve">
+    <value>Reset filter</value>
   </data>
-  <data name="TITLE_APPLICATION" xml:space="preserve">
+	<data name="BUTTON_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="BUTTON_SEND" xml:space="preserve">
+    <value>Send</value>
+  </data>
+	<data name="BUTTON_UPDATE" xml:space="preserve">
+    <value>Update</value>
+  </data>
+	<data name="COLUMN_ACTION" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+	<data name="EMAIL_SUBJECT_DEFAULT" xml:space="preserve">
+    <value>Hunting application</value>
+  </data>
+	<data name="ERROR_CREATE_FAILED" xml:space="preserve">
+    <value>Error while creating record</value>
+  </data>
+	<data name="ERROR_EXCEPTION" xml:space="preserve">
+    <value>Error while processing your request</value>
+  </data>
+	<data name="ERROR_NOT_ALLOWED" xml:space="preserve">
+    <value>You are not allowed to enter this section</value>
+  </data>
+	<data name="ERROR_NOT_FOUND" xml:space="preserve">
+    <value>Requested item was not found</value>
+  </data>
+	<data name="FILTER_FULLTEXT" xml:space="preserve">
+    <value>Fulltext</value>
+  </data>
+	<data name="LABEL_TABLE_EMPTY" xml:space="preserve">
+    <value>No record found</value>
+  </data>
+	<data name="LABEL_TABLE_TOTAL" xml:space="preserve">
+    <value>Total count:</value>
+  </data>
+	<data name="SUBTITLE_APPLICATION" xml:space="preserve">
+    <value>Application for hunters and stewards</value>
+  </data>
+	<data name="TITLE_APPLICATION" xml:space="preserve">
     <value>Hunting</value>
+  </data>
+	<data name="TITLE_SORT_ASC" xml:space="preserve">
+    <value>Sort ascending</value>
+  </data>
+	<data name="TITLE_SORT_DESC" xml:space="preserve">
+    <value>Sort descending</value>
+  </data>
+	<data name="VALIDATION_UPDATE_FAILED" xml:space="preserve">
+    <value>Error while saving changes</value>
   </data>
 </root>

@@ -1,0 +1,28 @@
+﻿@Scripts.Render("~/bundles/bootstrap-datepicker")
+@Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        var questionBlock = $('#questionnaire-block');
+
+        $.datetimepicker.setLocale(LANG);
+        $('.datetimepicker').datetimepicker({
+            format: DATEFORMAT + ' ' + TIMEFORMAT,
+        });
+
+        $('[data-toggle="popover"]').popover();
+
+        $('#questionnaire-select').on('change', function () {
+            var ident = $(this).val();
+            if (ident != '') {
+                var data = $('#checkin-form').serialize();
+                var url = BASE_URL + "CheckIn/SelectQuestionnaireAjax";
+                $.post(url, data, function (response) {
+                    questionBlock.html(response);
+                    $('[data-toggle="popover"]').popover();
+                });
+            } else {
+                questionBlock.html('');
+            }
+        });
+    });
+</script>

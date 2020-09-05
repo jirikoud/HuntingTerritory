@@ -1,0 +1,61 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.TerritoryModels.TerritoryUpdateModel
+
+<div class="row">
+    <div class="col-md-9">
+        <section>
+            @using (Html.BeginForm(Model.IsCreate ? "Create" : "Update", "Territory", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsCreate)
+                @Html.CustomValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <label>@Html.CheckBoxFor(model => model.IsPublic) @TerritoryRes.DETAIL_IS_PUBLIC</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-info" value="@(Model.IsCreate ? GlobalRes.BUTTON_CREATE : GlobalRes.BUTTON_UPDATE)" />
+                        @if (Model.IsCreate)
+                        {
+                            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Home", null, new { @class = "btn btn-default btn-md" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.Id }, new { @class = "btn btn-default btn-md" })
+                        }
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-3">
+        <div class="btn-group-vertical btn-block">
+            @if (Model.IsCreate)
+            {
+                @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Home", null, new { @class = "btn btn-default btn-md" })
+            }
+            else
+            {
+                @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.Id }, new { @class = "btn btn-default btn-md" })
+            }
+        </div>
+    </div>
+</div>

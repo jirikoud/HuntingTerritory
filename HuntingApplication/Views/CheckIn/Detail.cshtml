@@ -1,0 +1,112 @@
+﻿@using HuntingModel.Localization
+@using HuntingModel.Enumeration
+@model HuntingModel.ViewModel.CheckInModels.CheckInDetailModel
+@{
+    ViewBag.Title = CheckInRes.PAGE_TITLE_DETAIL;
+}
+
+<h2>@CheckInRes.PAGE_TITLE_DETAIL</h2>
+<h4>@CheckInRes.LABEL_DETAIL_INFO</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <tr>
+                <td><strong>@CheckInRes.DETAIL_CHECKIN_TIME</strong></td>
+                <td>@Model.CheckInTime</td>
+            </tr>
+            <tr>
+                <td><strong>@CheckInRes.DETAIL_QUESTIONNAIRE</strong></td>
+                <td>@Model.Questionnaire</td>
+            </tr>
+            @if (Model.QuestionList != null)
+            {
+                foreach (var question in Model.QuestionList)
+                {
+                    if (question.QuestionType == QuestionTypeEnum.Checkbox)
+                    {
+                        <tr>
+                            <td><strong>@question.Name</strong></td>
+                            <td>
+                                @if (question.BoolValue == true)
+                                {
+                                    <input type="checkbox" disabled="disabled" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" disabled="disabled" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                    else if (question.QuestionType == QuestionTypeEnum.CheckboxList)
+                    {
+                        <tr>
+                            <td><strong>@question.Name</strong></td>
+                            <td>
+                                <ul>
+                                    @foreach (var checkBox in question.CheckBoxList)
+                                    {
+                                        <li>
+                                            @if (checkBox.BoolValue == true)
+                                            {
+                                                <input type="checkbox" disabled="disabled" checked="checked" />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" disabled="disabled" />
+                                            }
+                                            <span>@checkBox.Name</span>
+                                        </li>
+                                    }
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                    else if (question.QuestionType == QuestionTypeEnum.DropDown)
+                    {
+                        <tr>
+                            <td><strong>@question.Name</strong></td>
+                            <td><span>@question.StringValue</span></td>
+                        </tr>
+                    }
+                    else if (question.QuestionType == QuestionTypeEnum.Number)
+                    {
+                        <tr>
+                            <td><strong>@question.Name</strong></td>
+                            <td><span>@question.StringValue</span></td>
+                        </tr>
+                    }
+                    else if (question.QuestionType == QuestionTypeEnum.TextArea)
+                    {
+                        <tr>
+                            <td><strong>@question.Name</strong></td>
+                            <td><span>@question.StringValue</span></td>
+                        </tr>
+                    }
+                    else if (question.QuestionType == QuestionTypeEnum.TextBox)
+                    {
+                        <tr>
+                            <td><strong>@question.Name</strong></td>
+                            <td><span>@question.StringValue</span></td>
+                        </tr>
+                    }
+                }
+            }
+            <tr>
+                <td><strong>@CheckInRes.DETAIL_NOTE</strong></td>
+                <td>@Model.Note</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @if (Model.CanUpdate)
+            {
+                @Html.ActionLink(GlobalRes.BUTTON_UPDATE, "Update", "CheckIn", new { id = Model.Id }, new { @class = "btn btn-info btn-md" })
+            }
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "CheckIn", new { id = Model.MapItemId }, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.TerritoryModels.TerritoryUpdateModel
+@{
+    ViewBag.Title = TerritoryRes.PAGE_TITLE_UPDATE;
+}
+
+<h2>@TerritoryRes.PAGE_TITLE_UPDATE</h2>
+<h4>@TerritoryRes.LABEL_UPDATE_INFO</h4>
+<hr />
+
+@Html.Partial("~/Views/Territory/CommonLayout/PartialUpdate.cshtml", Model)
+
+@section scripts {
+    @Html.Partial("~/Views/Territory/CommonLayout/PartialUpdateScripts.cshtml", Model)
+}

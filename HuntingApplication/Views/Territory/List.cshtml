@@ -1,45 +1,107 @@
 ﻿@using HuntingModel.Localization
-
-<h2>@TerritoryRes.TITLE_LIST</h2>
-<div>
-    <div id="div-territory-list">
-    </div>
-    <div>
-        <span>@HomeRes.LABEL_TERRITORY_LOGIN</span>
+@using HuntingModel.SqlGenerator.Generators
+@using HuntingModel.ViewModel.TerritoryModels
+@model TerritoryPageModel
+@{
+    ViewBag.Title = TerritoryRes.PAGE_TITLE_LIST;
+}
+<h2>@TerritoryRes.PAGE_TITLE_LIST</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <p>@GlobalRes.LABEL_TABLE_TOTAL&nbsp;<b>@Model.ListModel.TotalCount</b></p>
+        </div>
+        <table class="table table-data table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="sort-title">@TerritoryRes.COLUMN_NAME</span>
+                        <span class="sort">
+                            @Html.SortingLink(TerritoryFilter.SORT_NAME, "List", true, Model.Filter)
+                            @Html.SortingLink(TerritoryFilter.SORT_NAME, "List", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">@TerritoryRes.COLUMN_STEWARD</th>
+                    <th class="text-center">@TerritoryRes.COLUMN_USER_COUNT</th>
+                    <th class="text-center">@GlobalRes.COLUMN_ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ListModel.ListItem.Count == 0)
+                {
+                    <tr class="no-data"><td colspan="6">@GlobalRes.LABEL_TABLE_EMPTY</td></tr>
+                }
+                else
+                {
+                    foreach (var item in Model.ListModel.ListItem)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Steward</td>
+                            <td>@item.UserCount</td>
+                            <td class="edit text-center">
+                                @if (item.CanContact)
+                                {
+                                    <a data-toggle="modal" data-target="#contact-modal" data-id="@item.Id" class="btn btn-md btn-default">@TerritoryRes.BUTTON_CONTACT</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @if (Model.Pager != null)
+        {
+            @Html.Partial("~/Views/Shared/PartialPager.cshtml", Model.Pager)
+        }
     </div>
 </div>
 
-@section scripts {
+<div>
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            @using (Html.BeginForm("Contact", "Territory", FormMethod.Post))
+            {
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@TerritoryRes.MODAL_TITLE_CONTACT</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="contact-id" />
+                        <div class="form-group">
+                            <label for="contact-message">@TerritoryRes.DETAIL_CONTACT_MESSAGE</label>
+                            <textarea id="contact-message" class="form-control" rows="5" name="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="contact-submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
     <script type="text/javascript">
 
-        function LoadData(index) {
-            var searchField = $('#territory-list-search');
-            var searchString = '';
-            if (searchField.length > 0) {
-                searchString = searchField.val();
-            }
-            $.ajax({
-                type: "POST",
-                url: BASEPATH + "Territory/ListAjax",
-                data: { pageIndex: index, searchString: searchString },
-            }).done(function (data) {
-                $("#div-territory-list").html(data);
-            });
-        }
-
-        function searchClick() {
-            LoadData(0);
-        }
-
-        function pageIndexClick() {
-            var pageIndex = $(this).data('page');
-            LoadData(pageIndex);
-        }
-
-        $(document).ready(function () {
-            LoadData(0);
-            $('#div-territory-list').on("click", "#search-territory-list", searchClick);
-            $('#div-territory-list').on("click", ".page-index", pageIndexClick);
+    $(document).ready(function () {
+        $('#contact-modal').on('show.bs.modal', function (e) {
+            //get data-id attribute of the clicked element
+            var itemId = $(e.relatedTarget).data('id');
+            $(e.currentTarget).find('#contact-id').val(itemId);
         });
+        $('#contact-modal').on('shown.bs.modal', function (e) {
+            $(e.currentTarget).find('#contact-message').focus();
+        });
+    });
+
     </script>
+
 }

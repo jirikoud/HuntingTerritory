@@ -1,0 +1,54 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.CheckInModels.CheckInUpdateModel
+
+<div class="row">
+    <div class="col-md-9">
+        <section>
+            @using (Html.BeginForm(Model.IsCreate ? "Create" : "Update", "CheckIn", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "checkin-form" }))
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsCreate)
+                @Html.HiddenFor(model => model.MapItemId)
+                @Html.CustomValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CheckInTime, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.CheckInTime, new { @class = "form-control datetimepicker" })
+                        @Html.ValidationMessageFor(model => model.CheckInTime)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Questionnaire, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.Questionnaire, Model.QuestionnaireSelectList, CheckInRes.QUESTIONNAIRE_EMPTY, new { @class = "form-control", id="questionnaire-select" })
+                        @Html.ValidationMessageFor(model => model.Questionnaire)
+                    </div>
+                </div>
+                <div id="questionnaire-block">
+                    @if (Model.Questionnaire.HasValue)
+                    {
+                        @Html.Partial("SelectQuestionnaireAjax", Model)
+                    }
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Note, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Note, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Note)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" class="btn btn-info" value="@(Model.IsCreate ? GlobalRes.BUTTON_CREATE : GlobalRes.BUTTON_UPDATE)" />
+                        @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "CheckIn", new { id = Model.MapItemId }, new { @class = "btn btn-default btn-md" })
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-3">
+        <div class="btn-group-vertical btn-block">
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "CheckIn", new { id = Model.MapItemId }, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>

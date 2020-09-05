@@ -1,0 +1,48 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.AccountModels.ManageModel
+@{
+    ViewBag.Title = AccountRes.PAGE_TITLE_MANAGE;
+}
+
+<h2>@AccountRes.PAGE_TITLE_MANAGE</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <tr>
+                <td><strong>@AdminRes.DETAIL_EMAIL</strong></td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td><strong>@AdminRes.DETAIL_FULLNAME</strong></td>
+                <td>@Model.Fullname</td>
+            </tr>
+            <tr>
+                <td><strong>@AdminRes.DETAIL_ACCOUNT_TYPE</strong></td>
+                <td>@Model.AccountType</td>
+            </tr>
+            <tr>
+                <td><strong>@AdminRes.DETAIL_MAX_TERRITORY_COUNT</strong></td>
+                <td>
+                    @if (Model.MaxTerritoryCount >= 0)
+                    {
+                        <text>@Model.UsedTerritoryCount / @Model.MaxTerritoryCount</text>
+                    }
+                    else
+                    {
+                        @AccountRes.LABEL_TERRITORY_COUNT_UNLIMITED
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @if (Model.CanChangePassword)
+            {
+                @Html.ActionLink(AccountRes.BUTTON_CHANGE_PASSWORD, "ChangePassword", "Account", new { id = Model.Id }, new { @class = "btn btn-info btn-md" })
+            }
+        </div>
+    </div>
+</div>

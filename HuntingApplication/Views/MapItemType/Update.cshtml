@@ -1,0 +1,15 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.MapItemTypeModels.MapItemTypeUpdateModel
+@{
+    ViewBag.Title = MapItemTypeRes.PAGE_TITLE_UPDATE;
+}
+
+<h2>@MapItemTypeRes.PAGE_TITLE_UPDATE</h2>
+<h4>@MapItemTypeRes.LABEL_UPDATE_INFO</h4>
+<hr />
+
+@Html.Partial("~/Views/MapItemType/CommonLayout/PartialUpdate.cshtml", Model)
+
+@section scripts {
+    @Html.Partial("~/Views/MapItemType/CommonLayout/PartialUpdateScripts.cshtml", Model)
+}

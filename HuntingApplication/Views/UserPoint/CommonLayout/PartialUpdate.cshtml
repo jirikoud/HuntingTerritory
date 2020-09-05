@@ -1,0 +1,78 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.UserPointModels.UserPointUpdateModel
+
+<div class="row">
+    <div class="col-md-6">
+        <section>
+            @using (Html.BeginForm(Model.IsCreate ? "Create" : "Update", "UserPoint", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.TerritoryId)
+                @Html.HiddenFor(model => model.IsCreate)
+                @Html.CustomValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="map-location-x" class="col-md-4 control-label">@UserPointRes.DETAIL_LOCATION_X</label>
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.LocationX, new { id = "map-location-x", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LocationX)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="map-location-y" class="col-md-4 control-label">@UserPointRes.DETAIL_LOCATION_Y</label>
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.LocationY, new { id = "map-location-y", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LocationY)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsPublic, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            <label>@Html.CheckBoxFor(model => model.IsPublic, new { @class = "share-all" }) @UserPointRes.DETAIL_IS_PUBLIC</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="share-list" class="form-group">
+                    @for (int index = 0; index < Model.UserShareList.Count; index++)
+                    {
+                        <div class="col-md-offset-4 col-md-8">
+                            <div class="checkbox">
+                                @Html.HiddenFor(model => model.UserShareList[index].Id)
+                                @Html.HiddenFor(model => model.UserShareList[index].Name)
+                                <label>@Html.CheckBoxFor(model => model.UserShareList[index].IsShared, new { @class = "share-user" }) @Model.UserShareList[index].Name</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" class="btn btn-info" value="@(Model.IsCreate ? GlobalRes.BUTTON_CREATE : GlobalRes.BUTTON_UPDATE)" />
+                        @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.TerritoryId }, new { @class = "btn btn-default btn-md" })
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-6">
+        <div class="well">
+            <strong>@TerritoryRes.DETAIL_MAP</strong><br />
+            <div class="map-block">
+                <div id="map-canvas" class="canvas"></div>
+            </div>
+        </div>
+    </div>
+</div>

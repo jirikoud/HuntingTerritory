@@ -1,0 +1,34 @@
+﻿@Scripts.Render("~/bundles/jqueryval")
+<script>
+    function questionTypeChange() {
+        var optionRow = $('#option-row');
+        var type = $(this).val();
+
+        if (type === "DropDown" || type === "CheckboxList") {
+            optionRow.removeClass('hidden');
+        } else {
+            optionRow.addClass('hidden');
+        }
+        var requiredRow = $('#required-row');
+        if (type === "TextBox" || type === "TextArea" || type === "Number" || type === "DropDown") {
+            requiredRow.removeClass('hidden');
+        } else {
+            requiredRow.addClass('hidden');
+        }
+    }
+
+    $(document).ready(function () {
+        $('#QuestionType').on('change', questionTypeChange).each(questionTypeChange);
+
+        var optionTable = $('#option-table');
+        optionTable.on('click', '[data-form-action]', function (e) {
+            var formAction = $(this).data('form-action');
+            var index = $(this).data('index');
+            var url = BASE_URL + "Question/OptionTableAjax?formaction=" + formAction + "&index=" + index;
+            var data = $('#option-form').serialize();
+            $.post(url, data, function (response) {
+                optionTable.html(response)
+            });
+        });
+    });
+</script>

@@ -1,0 +1,19 @@
+﻿@using HuntingModel.Localization
+@model bool
+
+<ul class="nav navbar-nav navbar-right">
+    @if (Model)
+    {
+        @*<li>
+            @Html.ActionLink(AccountRes.BUTTON_ADMIN_LINK, "Index", "Admin")</li>*@
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                @AdminRes.BUTTON_ADMIN_LINK
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink(AdminRes.BUTTON_USER_ADMIN_LINK, "Index", "Admin")</li>
+            </ul>
+        </li>
+    }
+</ul>

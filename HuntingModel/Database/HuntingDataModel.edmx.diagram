@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3e4f00c871204cf4a2321b732e753735" Name="Diagram1">
+        <EntityTypeShape EntityType="HuntingDataModel.EmailInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.Language" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.MapItem" Width="1.5" PointX="3.625" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.MapItemType" Width="1.5" PointX="5.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.ModelVersion" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.Territory" Width="1.5" PointX="5.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.TerritoryUser" Width="1.5" PointX="9.375" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HuntingDataModel.UserSession" Width="1.5" PointX="2.75" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="HuntingDataModel.FK_MapItem_Territory" ManuallyRouted="false" />
+        <AssociationConnector Association="HuntingDataModel.FK_MapItemType_Territory" ManuallyRouted="false" />
+        <AssociationConnector Association="HuntingDataModel.FK_TerritoryUser_Territory" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="HuntingDataModel.UserLocation" Width="1.5" PointX="4.75" PointY="4.25" />
+        <EntityTypeShape EntityType="HuntingDataModel.UserMapPoint" Width="1.5" PointX="0.875" PointY="17.25" />
+        <AssociationConnector Association="HuntingDataModel.FK_UserMapPoint_Territory" />
+        <AssociationConnector Association="HuntingDataModel.FK_MapItem_MapItemType" />
+        <EntityTypeShape EntityType="HuntingDataModel.UserMapPointShare" Width="1.5" PointX="3.125" PointY="16.25" />
+        <AssociationConnector Association="HuntingDataModel.FK_UserMapPointShare_UserMapPoint" />
+        <EntityTypeShape EntityType="HuntingDataModel.MapArea" Width="1.5" PointX="8" PointY="11.375" />
+        <AssociationConnector Association="HuntingDataModel.FK_MapArea_Territory" ManuallyRouted="true" >
+          <ConnectorPoint PointX="7.25" PointY="15.691342694998745" />
+          <ConnectorPoint PointX="8.75" PointY="15.691342694998745" />
+          <ConnectorPoint PointX="8.75" PointY="14.701396484375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="HuntingDataModel.TerritoryUserContact" Width="1.5" PointX="10.625" PointY="12.75" />
+        <AssociationConnector Association="HuntingDataModel.FK_TerritoryUserContact_Territory" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="HuntingDataModel.Option" Width="1.5" PointX="15.5" PointY="9.5" />
+        <EntityTypeShape EntityType="HuntingDataModel.Question" Width="1.5" PointX="13.25" PointY="9.125" />
+        <EntityTypeShape EntityType="HuntingDataModel.Questionnaire" Width="1.5" PointX="11" PointY="7.375" />
+        <AssociationConnector Association="HuntingDataModel.FK_Questionnaire_MapItemType" />
+        <AssociationConnector Association="HuntingDataModel.FK_Option_Question" />
+        <AssociationConnector Association="HuntingDataModel.FK_Question_Questionnaire" />
+        <EntityTypeShape EntityType="HuntingDataModel.Answer" Width="1.5" PointX="18.5" PointY="5" />
+        <EntityTypeShape EntityType="HuntingDataModel.CheckIn" Width="1.5" PointX="15.125" PointY="2.25" />
+        <AssociationConnector Association="HuntingDataModel.FK_Answer_CheckIn" />
+        <AssociationConnector Association="HuntingDataModel.FK_Answer_Option" />
+        <AssociationConnector Association="HuntingDataModel.FK_Answer_Question" />
+        <AssociationConnector Association="HuntingDataModel.FK_CheckIn_MapItem" />
+        <AssociationConnector Association="HuntingDataModel.FK_CheckIn_Questionnaire" />
+        <EntityTypeShape EntityType="HuntingDataModel.Track" Width="1.5" PointX="7.375" PointY="4.625" />
+        <AssociationConnector Association="HuntingDataModel.FK_UserLocation_Track" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

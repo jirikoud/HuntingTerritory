@@ -1,0 +1,48 @@
+﻿@using HuntingModel.ViewModel.QuestionModels
+@using HuntingModel.Localization
+@model QuestionUpdateModel
+
+<table class="table table-data table-striped">
+    <thead>
+        <tr>
+            <th>
+                <button type="button" class="btn btn-info glyphicon glyphicon-plus" data-form-action="add"></button>
+            </th>
+            <th class="text-center">@QuestionRes.COLUMN_OPTION_NAME</th>
+            <th class="text-center">@GlobalRes.COLUMN_ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.OptionList.Count == 0)
+        {
+            <tr class="no-data"><td colspan="5">@GlobalRes.LABEL_TABLE_EMPTY</td></tr>
+        }
+        else
+        {
+            for (int index = 0; index < Model.OptionList.Count; index++)
+            {
+                var item = Model.OptionList[index];
+                <tr>
+                    <td>
+                        @Html.HiddenFor(model => model.OptionList[index].Id)
+                        @if (item.IsFirst == false)
+                        {
+                            <button type="button" class="btn btn-info glyphicon glyphicon-arrow-up" data-form-action="move-up" data-index="@index"></button>
+                        }
+                        @if (item.IsLast == false)
+                        {
+                            <button type="button" class="btn btn-info glyphicon glyphicon-arrow-down" data-form-action="move-down" data-index="@index"></button>
+                        }
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.OptionList[index].Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.OptionList[index].Name)
+                    </td>
+                    <td class="edit text-center">
+                        <button type="button" class="btn btn-info glyphicon glyphicon-trash" data-form-action="delete" data-index="@index"></button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

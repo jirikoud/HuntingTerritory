@@ -1,0 +1,2506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HuntingDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AclUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="MaxTerritoryCount" Type="int" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="EmailCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailCodeExpire" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StringValue" Type="nvarchar(max)" />
+          <Property Name="FloatValue" Type="float" />
+          <Property Name="IntValue" Type="int" />
+          <Property Name="BoolValue" Type="bit" />
+          <Property Name="OptionId" Type="int" />
+          <Property Name="CheckInId" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CheckIn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapItemId" Type="int" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="CheckTime" Type="datetime" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderAddress" Type="nvarchar(max)" />
+          <Property Name="ReceiverAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="RetryCount" Type="int" Nullable="false" />
+          <Property Name="SendState" Type="int" Nullable="false" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+          <Property Name="SendDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="SysUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Shortcut" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="DateFormat" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TimeFormat" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateFormatJS" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TimeFormatJS" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MapArea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PolygonData" Type="nvarchar(max)" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MapItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationX" Type="float" Nullable="false" />
+          <Property Name="LocationY" Type="float" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MapItemType" Type="int" Nullable="false" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MapItemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModelVersion">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="QuestionType" Type="int" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questionnaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapItemTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Territory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="StewardId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="IsDemoTemplate" Type="bit" Nullable="false" />
+          <Property Name="IsPublic" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TerritoryUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AclUserId" Type="int" Nullable="false" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="TerritoryUserRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TerritoryUserContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="AclUserId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="SysUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="LocationX" Type="float" Nullable="false" />
+          <Property Name="LocationY" Type="float" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="TrackId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMapPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationX" Type="float" Nullable="false" />
+          <Property Name="LocationY" Type="float" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsPublic" Type="bit" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="SysCreator" Type="int" Nullable="false" />
+          <Property Name="SysEditor" Type="int" />
+          <Property Name="SysUpdated" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="AclUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMapPointShare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserMapPointId" Type="int" Nullable="false" />
+          <Property Name="AclUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Session" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AclUserId" Type="int" Nullable="false" />
+          <Property Name="SysCreated" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="AclUser1" Type="Self.AclUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AclUser1">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_CheckIn">
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckIn">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="CheckInId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_Option">
+          <End Role="Option" Type="Self.Option" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Option">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_MapItem">
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="MapItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Questionnaire">
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="0..1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapArea_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="MapArea" Type="Self.MapArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapArea">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapArea_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="MapArea" Type="Self.MapArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapArea">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapArea_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="MapArea" Type="Self.MapArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapArea">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_MapItemType">
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapItemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="MapItemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItemType_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItemType">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItemType_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItemType">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItemType_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItemType">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Option_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Option" Type="Self.Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Option">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Option_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="Option" Type="Self.Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Option">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Option_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Option" Type="Self.Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Option">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Questionnaire">
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_MapItemType">
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapItemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="MapItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territory_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Territory" Type="Self.Territory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territory">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territory_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="Territory" Type="Self.Territory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territory">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territory_AclUser_Steward">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Territory" Type="Self.Territory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territory">
+              <PropertyRef Name="StewardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUser_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="TerritoryUser" Type="Self.TerritoryUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUser">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUser_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="TerritoryUser" Type="Self.TerritoryUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUser">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="TerritoryUserContact" Type="Self.TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="TerritoryUserContact" Type="Self.TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="TerritoryUserContact" Type="Self.TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="TerritoryUserContact" Type="Self.TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Track_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Track" Type="Self.Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Track">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLocation_Track">
+          <End Role="Track" Type="Self.Track" Multiplicity="1" />
+          <End Role="UserLocation" Type="Self.UserLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Track">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLocation">
+              <PropertyRef Name="TrackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="UserMapPoint" Type="Self.UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="UserMapPoint" Type="Self.UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="UserMapPoint" Type="Self.UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="UserMapPoint" Type="Self.UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPointShare_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="UserMapPointShare" Type="Self.UserMapPointShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPointShare">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPointShare_UserMapPoint">
+          <End Role="UserMapPoint" Type="Self.UserMapPoint" Multiplicity="1" />
+          <End Role="UserMapPointShare" Type="Self.UserMapPointShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMapPoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPointShare">
+              <PropertyRef Name="UserMapPointId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSession_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserSession" Type="Self.UserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSession">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HuntingDataModelStoreContainer">
+          <EntitySet Name="AclUser" EntityType="Self.AclUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckIn" EntityType="Self.CheckIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailInfo" EntityType="Self.EmailInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MapArea" EntityType="Self.MapArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MapItem" EntityType="Self.MapItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MapItemType" EntityType="Self.MapItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModelVersion" EntityType="Self.ModelVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Option" EntityType="Self.Option" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questionnaire" EntityType="Self.Questionnaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Territory" EntityType="Self.Territory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerritoryUser" EntityType="Self.TerritoryUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerritoryUserContact" EntityType="Self.TerritoryUserContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLocation" EntityType="Self.UserLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMapPoint" EntityType="Self.UserMapPoint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMapPointShare" EntityType="Self.UserMapPointShare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSession" EntityType="Self.UserSession" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AclUser_Editor" Association="Self.FK_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="AclUser1" EntitySet="AclUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_CheckIn" Association="Self.FK_Answer_CheckIn">
+            <End Role="CheckIn" EntitySet="CheckIn" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_Option" Association="Self.FK_Answer_Option">
+            <End Role="Option" EntitySet="Option" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_AclUser_Creator" Association="Self.FK_CheckIn_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_AclUser_Editor" Association="Self.FK_CheckIn_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_MapItem" Association="Self.FK_CheckIn_MapItem">
+            <End Role="MapItem" EntitySet="MapItem" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Questionnaire" Association="Self.FK_CheckIn_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapArea_Creator" Association="Self.FK_MapArea_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="MapArea" EntitySet="MapArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapArea_Editor" Association="Self.FK_MapArea_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="MapArea" EntitySet="MapArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapArea_Territory" Association="Self.FK_MapArea_Territory">
+            <End Role="Territory" EntitySet="Territory" />
+            <End Role="MapArea" EntitySet="MapArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_AclUser_Creator" Association="Self.FK_MapItem_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="MapItem" EntitySet="MapItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_AclUser_Editor" Association="Self.FK_MapItem_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="MapItem" EntitySet="MapItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_MapItemType" Association="Self.FK_MapItem_MapItemType">
+            <End Role="MapItemType" EntitySet="MapItemType" />
+            <End Role="MapItem" EntitySet="MapItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_Territory" Association="Self.FK_MapItem_Territory">
+            <End Role="Territory" EntitySet="Territory" />
+            <End Role="MapItem" EntitySet="MapItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItemType_AclUser_Creator" Association="Self.FK_MapItemType_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="MapItemType" EntitySet="MapItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItemType_AclUser_Editor" Association="Self.FK_MapItemType_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="MapItemType" EntitySet="MapItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItemType_Territory" Association="Self.FK_MapItemType_Territory">
+            <End Role="Territory" EntitySet="Territory" />
+            <End Role="MapItemType" EntitySet="MapItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Option_AclUser_Creator" Association="Self.FK_Option_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Option" EntitySet="Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Option_AclUser_Editor" Association="Self.FK_Option_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Option" EntitySet="Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Option_Question" Association="Self.FK_Option_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Option" EntitySet="Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_AclUser_Creator" Association="Self.FK_Question_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_AclUser_Editor" Association="Self.FK_Question_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Questionnaire" Association="Self.FK_Question_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_AclUser_Creator" Association="Self.FK_Questionnaire_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_AclUser_Editor" Association="Self.FK_Questionnaire_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_MapItemType" Association="Self.FK_Questionnaire_MapItemType">
+            <End Role="MapItemType" EntitySet="MapItemType" />
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territory_AclUser_Creator" Association="Self.FK_Territory_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Territory" EntitySet="Territory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territory_AclUser_Editor" Association="Self.FK_Territory_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Territory" EntitySet="Territory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territory_AclUser_Steward" Association="Self.FK_Territory_AclUser_Steward">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Territory" EntitySet="Territory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUser_AclUser" Association="Self.FK_TerritoryUser_AclUser">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="TerritoryUser" EntitySet="TerritoryUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUser_Territory" Association="Self.FK_TerritoryUser_Territory">
+            <End Role="Territory" EntitySet="Territory" />
+            <End Role="TerritoryUser" EntitySet="TerritoryUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_AclUser" Association="Self.FK_TerritoryUserContact_AclUser">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_Creator" Association="Self.FK_TerritoryUserContact_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_Editor" Association="Self.FK_TerritoryUserContact_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_Territory" Association="Self.FK_TerritoryUserContact_Territory">
+            <End Role="Territory" EntitySet="Territory" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Track_AclUser" Association="Self.FK_Track_AclUser">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="Track" EntitySet="Track" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLocation_Track" Association="Self.FK_UserLocation_Track">
+            <End Role="Track" EntitySet="Track" />
+            <End Role="UserLocation" EntitySet="UserLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_AclUser" Association="Self.FK_UserMapPoint_AclUser">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_AclUser_Creator" Association="Self.FK_UserMapPoint_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_AclUser_Editor" Association="Self.FK_UserMapPoint_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_Territory" Association="Self.FK_UserMapPoint_Territory">
+            <End Role="Territory" EntitySet="Territory" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPointShare_AclUser" Association="Self.FK_UserMapPointShare_AclUser">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="UserMapPointShare" EntitySet="UserMapPointShare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPointShare_UserMapPoint" Association="Self.FK_UserMapPointShare_UserMapPoint">
+            <End Role="UserMapPoint" EntitySet="UserMapPoint" />
+            <End Role="UserMapPointShare" EntitySet="UserMapPointShare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSession_AclUser" Association="Self.FK_UserSession_AclUser">
+            <End Role="AclUser" EntitySet="AclUser" />
+            <End Role="UserSession" EntitySet="UserSession" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HuntingDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AclUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="MaxTerritoryCount" Type="Int32" Nullable="false" />
+          <Property Name="Fullname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AclUser1" Relationship="Self.FK_AclUser_Editor" FromRole="AclUser" ToRole="AclUser1" />
+          <NavigationProperty Name="AclUserEditor" Relationship="Self.FK_AclUser_Editor" FromRole="AclUser1" ToRole="AclUser" />
+          <NavigationProperty Name="MapItems" Relationship="Self.FK_MapItem_AclUser_Creator" FromRole="AclUser" ToRole="MapItem" />
+          <NavigationProperty Name="MapItems1" Relationship="Self.FK_MapItem_AclUser_Editor" FromRole="AclUser" ToRole="MapItem" />
+          <NavigationProperty Name="MapItemTypes" Relationship="Self.FK_MapItemType_AclUser_Creator" FromRole="AclUser" ToRole="MapItemType" />
+          <NavigationProperty Name="MapItemTypes1" Relationship="Self.FK_MapItemType_AclUser_Editor" FromRole="AclUser" ToRole="MapItemType" />
+          <NavigationProperty Name="Territories" Relationship="Self.FK_Territory_AclUser_Creator" FromRole="AclUser" ToRole="Territory" />
+          <NavigationProperty Name="Territories1" Relationship="Self.FK_Territory_AclUser_Editor" FromRole="AclUser" ToRole="Territory" />
+          <NavigationProperty Name="Territories2" Relationship="Self.FK_Territory_AclUser_Steward" FromRole="AclUser" ToRole="Territory" />
+          <NavigationProperty Name="TerritoryUsers" Relationship="Self.FK_TerritoryUser_AclUser" FromRole="AclUser" ToRole="TerritoryUser" />
+          <NavigationProperty Name="UserSessions" Relationship="Self.FK_UserSession_AclUser" FromRole="AclUser" ToRole="UserSession" />
+          <Property Name="EmailCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailCodeExpire" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserLocations" Relationship="HuntingDataModel.FK_UserLocation_AclUser_Creator" FromRole="AclUser" ToRole="UserLocation" />
+          <NavigationProperty Name="UserMapPoints" Relationship="HuntingDataModel.FK_UserMapPoint_AclUser" FromRole="AclUser" ToRole="UserMapPoint" />
+          <NavigationProperty Name="UserMapPoints1" Relationship="HuntingDataModel.FK_UserMapPoint_AclUser_Creator" FromRole="AclUser" ToRole="UserMapPoint" />
+          <NavigationProperty Name="UserMapPoints2" Relationship="HuntingDataModel.FK_UserMapPoint_AclUser_Editor" FromRole="AclUser" ToRole="UserMapPoint" />
+          <NavigationProperty Name="SharedMapPointList" Relationship="HuntingDataModel.FK_UserMapPointShare_AclUser" FromRole="AclUser" ToRole="UserMapPointShare" />
+          <NavigationProperty Name="MapAreas" Relationship="HuntingDataModel.FK_MapArea_Creator" FromRole="AclUser" ToRole="MapArea" />
+          <NavigationProperty Name="MapAreas1" Relationship="HuntingDataModel.FK_MapArea_Editor" FromRole="AclUser" ToRole="MapArea" />
+          <NavigationProperty Name="TerritoryUserContacts" Relationship="HuntingDataModel.FK_TerritoryUserContact_AclUser" FromRole="AclUser" ToRole="TerritoryUserContact" />
+          <NavigationProperty Name="TerritoryUserContacts1" Relationship="HuntingDataModel.FK_TerritoryUserContact_Creator" FromRole="AclUser" ToRole="TerritoryUserContact" />
+          <NavigationProperty Name="TerritoryUserContacts2" Relationship="HuntingDataModel.FK_TerritoryUserContact_Editor" FromRole="AclUser" ToRole="TerritoryUserContact" />
+          <NavigationProperty Name="Options" Relationship="HuntingDataModel.FK_Option_AclUser_Creator" FromRole="AclUser" ToRole="Option" />
+          <NavigationProperty Name="Options1" Relationship="HuntingDataModel.FK_Option_AclUser_Editor" FromRole="AclUser" ToRole="Option" />
+          <NavigationProperty Name="Questions" Relationship="HuntingDataModel.FK_Question_AclUser_Creator" FromRole="AclUser" ToRole="Question" />
+          <NavigationProperty Name="Questions1" Relationship="HuntingDataModel.FK_Question_AclUser_Editor" FromRole="AclUser" ToRole="Question" />
+          <NavigationProperty Name="Questionnaires" Relationship="HuntingDataModel.FK_Questionnaire_AclUser_Creator" FromRole="AclUser" ToRole="Questionnaire" />
+          <NavigationProperty Name="Questionnaires1" Relationship="HuntingDataModel.FK_Questionnaire_AclUser_Editor" FromRole="AclUser" ToRole="Questionnaire" />
+          <NavigationProperty Name="CheckIns" Relationship="HuntingDataModel.FK_CheckIn_AclUser_Creator" FromRole="AclUser" ToRole="CheckIn" />
+          <NavigationProperty Name="CheckIns1" Relationship="HuntingDataModel.FK_CheckIn_AclUser_Editor" FromRole="AclUser" ToRole="CheckIn" />
+          <NavigationProperty Name="Tracks" Relationship="HuntingDataModel.FK_Track_AclUser" FromRole="AclUser" ToRole="Track" />
+        </EntityType>
+        <EntityType Name="EmailInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="RetryCount" Type="Int32" Nullable="false" />
+          <Property Name="SendState" Type="Int32" Nullable="false" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Shortcut" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="DateFormat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeFormat" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateFormatJS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TimeFormatJS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MapItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationX" Type="Double" Nullable="false" />
+          <Property Name="LocationY" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MapItemType" Type="Int32" Nullable="false" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AclUser" Relationship="Self.FK_MapItem_AclUser_Creator" FromRole="MapItem" ToRole="AclUser" />
+          <NavigationProperty Name="AclUser1" Relationship="Self.FK_MapItem_AclUser_Editor" FromRole="MapItem" ToRole="AclUser" />
+          <NavigationProperty Name="Territory" Relationship="Self.FK_MapItem_Territory" FromRole="MapItem" ToRole="Territory" />
+          <NavigationProperty Name="MapItemTypeRecord" Relationship="HuntingDataModel.FK_MapItem_MapItemType" FromRole="MapItem" ToRole="MapItemType" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CheckIns" Relationship="HuntingDataModel.FK_CheckIn_MapItem" FromRole="MapItem" ToRole="CheckIn" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MapItemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AclUser" Relationship="Self.FK_MapItemType_AclUser_Creator" FromRole="MapItemType" ToRole="AclUser" />
+          <NavigationProperty Name="AclUser1" Relationship="Self.FK_MapItemType_AclUser_Editor" FromRole="MapItemType" ToRole="AclUser" />
+          <NavigationProperty Name="Territory" Relationship="Self.FK_MapItemType_Territory" FromRole="MapItemType" ToRole="Territory" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MapItems" Relationship="HuntingDataModel.FK_MapItem_MapItemType" FromRole="MapItemType" ToRole="MapItem" />
+          <NavigationProperty Name="Questionnaires" Relationship="HuntingDataModel.FK_Questionnaire_MapItemType" FromRole="MapItemType" ToRole="Questionnaire" />
+        </EntityType>
+        <EntityType Name="ModelVersion">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Territory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StewardId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <NavigationProperty Name="AclUserCreator" Relationship="Self.FK_Territory_AclUser_Creator" FromRole="Territory" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="Self.FK_Territory_AclUser_Editor" FromRole="Territory" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserSteward" Relationship="Self.FK_Territory_AclUser_Steward" FromRole="Territory" ToRole="AclUser" />
+          <NavigationProperty Name="MapItems" Relationship="Self.FK_MapItem_Territory" FromRole="Territory" ToRole="MapItem" />
+          <NavigationProperty Name="MapItemTypes" Relationship="Self.FK_MapItemType_Territory" FromRole="Territory" ToRole="MapItemType" />
+          <NavigationProperty Name="TerritoryUsers" Relationship="Self.FK_TerritoryUser_Territory" FromRole="Territory" ToRole="TerritoryUser" />
+          <NavigationProperty Name="UserMapPoints" Relationship="HuntingDataModel.FK_UserMapPoint_Territory" FromRole="Territory" ToRole="UserMapPoint" />
+          <NavigationProperty Name="MapAreas" Relationship="HuntingDataModel.FK_MapArea_Territory" FromRole="Territory" ToRole="MapArea" />
+          <Property Name="IsDemoTemplate" Type="Boolean" Nullable="false" />
+          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TerritoryUserContacts" Relationship="HuntingDataModel.FK_TerritoryUserContact_Territory" FromRole="Territory" ToRole="TerritoryUserContact" />
+        </EntityType>
+        <EntityType Name="TerritoryUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AclUserId" Type="Int32" Nullable="false" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AclUser" Relationship="Self.FK_TerritoryUser_AclUser" FromRole="TerritoryUser" ToRole="AclUser" />
+          <NavigationProperty Name="Territory" Relationship="Self.FK_TerritoryUser_Territory" FromRole="TerritoryUser" ToRole="Territory" />
+          <Property Name="TerritoryUserRole" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Session" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AclUserId" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AclUser" Relationship="Self.FK_UserSession_AclUser" FromRole="UserSession" ToRole="AclUser" />
+        </EntityType>
+        <Association Name="FK_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="AclUser1" Type="Self.AclUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AclUser1">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItemType_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItemType">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItemType_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItemType">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territory_AclUser_Creator">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Territory" Type="Self.Territory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territory">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territory_AclUser_Editor">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="0..1" />
+          <End Role="Territory" Type="Self.Territory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territory">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territory_AclUser_Steward">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="Territory" Type="Self.Territory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territory">
+              <PropertyRef Name="StewardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUser_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="TerritoryUser" Type="Self.TerritoryUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUser">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSession_AclUser">
+          <End Role="AclUser" Type="Self.AclUser" Multiplicity="1" />
+          <End Role="UserSession" Type="Self.UserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSession">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="MapItem" Type="Self.MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItemType_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="MapItemType" Type="Self.MapItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItemType">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUser_Territory">
+          <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
+          <End Role="TerritoryUser" Type="Self.TerritoryUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUser">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HuntingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AclUsers" EntityType="Self.AclUser" />
+          <EntitySet Name="EmailInfoes" EntityType="Self.EmailInfo" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="MapItems" EntityType="Self.MapItem" />
+          <EntitySet Name="MapItemTypes" EntityType="Self.MapItemType" />
+          <EntitySet Name="ModelVersions" EntityType="Self.ModelVersion" />
+          <EntitySet Name="Territories" EntityType="Self.Territory" />
+          <EntitySet Name="TerritoryUsers" EntityType="Self.TerritoryUser" />
+          <EntitySet Name="UserSessions" EntityType="Self.UserSession" />
+          <AssociationSet Name="FK_AclUser_Editor" Association="Self.FK_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="AclUser1" EntitySet="AclUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_AclUser_Creator" Association="Self.FK_MapItem_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="MapItem" EntitySet="MapItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_AclUser_Editor" Association="Self.FK_MapItem_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="MapItem" EntitySet="MapItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItemType_AclUser_Creator" Association="Self.FK_MapItemType_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="MapItemType" EntitySet="MapItemTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItemType_AclUser_Editor" Association="Self.FK_MapItemType_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="MapItemType" EntitySet="MapItemTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territory_AclUser_Creator" Association="Self.FK_Territory_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Territory" EntitySet="Territories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territory_AclUser_Editor" Association="Self.FK_Territory_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Territory" EntitySet="Territories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territory_AclUser_Steward" Association="Self.FK_Territory_AclUser_Steward">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Territory" EntitySet="Territories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUser_AclUser" Association="Self.FK_TerritoryUser_AclUser">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="TerritoryUser" EntitySet="TerritoryUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSession_AclUser" Association="Self.FK_UserSession_AclUser">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="UserSession" EntitySet="UserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_Territory" Association="Self.FK_MapItem_Territory">
+            <End Role="Territory" EntitySet="Territories" />
+            <End Role="MapItem" EntitySet="MapItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItemType_Territory" Association="Self.FK_MapItemType_Territory">
+            <End Role="Territory" EntitySet="Territories" />
+            <End Role="MapItemType" EntitySet="MapItemTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUser_Territory" Association="Self.FK_TerritoryUser_Territory">
+            <End Role="Territory" EntitySet="Territories" />
+            <End Role="TerritoryUser" EntitySet="TerritoryUsers" />
+          </AssociationSet>
+          <EntitySet Name="UserLocations" EntityType="HuntingDataModel.UserLocation" />
+          <EntitySet Name="UserMapPoints" EntityType="HuntingDataModel.UserMapPoint" />
+          <AssociationSet Name="FK_UserLocation_AclUser_Creator" Association="HuntingDataModel.FK_UserLocation_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="UserLocation" EntitySet="UserLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_AclUser" Association="HuntingDataModel.FK_UserMapPoint_AclUser">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_AclUser_Creator" Association="HuntingDataModel.FK_UserMapPoint_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_AclUser_Editor" Association="HuntingDataModel.FK_UserMapPoint_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPoint_Territory" Association="HuntingDataModel.FK_UserMapPoint_Territory">
+            <End Role="Territory" EntitySet="Territories" />
+            <End Role="UserMapPoint" EntitySet="UserMapPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapItem_MapItemType" Association="HuntingDataModel.FK_MapItem_MapItemType">
+            <End Role="MapItemType" EntitySet="MapItemTypes" />
+            <End Role="MapItem" EntitySet="MapItems" />
+          </AssociationSet>
+          <EntitySet Name="UserMapPointShares" EntityType="HuntingDataModel.UserMapPointShare" />
+          <AssociationSet Name="FK_UserMapPointShare_AclUser" Association="HuntingDataModel.FK_UserMapPointShare_AclUser">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="UserMapPointShare" EntitySet="UserMapPointShares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMapPointShare_UserMapPoint" Association="HuntingDataModel.FK_UserMapPointShare_UserMapPoint">
+            <End Role="UserMapPoint" EntitySet="UserMapPoints" />
+            <End Role="UserMapPointShare" EntitySet="UserMapPointShares" />
+          </AssociationSet>
+          <EntitySet Name="MapAreas" EntityType="HuntingDataModel.MapArea" />
+          <AssociationSet Name="FK_MapArea_Creator" Association="HuntingDataModel.FK_MapArea_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="MapArea" EntitySet="MapAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapArea_Editor" Association="HuntingDataModel.FK_MapArea_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="MapArea" EntitySet="MapAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapArea_Territory" Association="HuntingDataModel.FK_MapArea_Territory">
+            <End Role="Territory" EntitySet="Territories" />
+            <End Role="MapArea" EntitySet="MapAreas" />
+          </AssociationSet>
+          <EntitySet Name="TerritoryUserContacts" EntityType="HuntingDataModel.TerritoryUserContact" />
+          <AssociationSet Name="FK_TerritoryUserContact_AclUser" Association="HuntingDataModel.FK_TerritoryUserContact_AclUser">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_Creator" Association="HuntingDataModel.FK_TerritoryUserContact_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_Editor" Association="HuntingDataModel.FK_TerritoryUserContact_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TerritoryUserContact_Territory" Association="HuntingDataModel.FK_TerritoryUserContact_Territory">
+            <End Role="Territory" EntitySet="Territories" />
+            <End Role="TerritoryUserContact" EntitySet="TerritoryUserContacts" />
+          </AssociationSet>
+          <EntitySet Name="Options" EntityType="HuntingDataModel.Option" />
+          <EntitySet Name="Questions" EntityType="HuntingDataModel.Question" />
+          <EntitySet Name="Questionnaires" EntityType="HuntingDataModel.Questionnaire" />
+          <AssociationSet Name="FK_Option_AclUser_Creator" Association="HuntingDataModel.FK_Option_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Option" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Option_AclUser_Editor" Association="HuntingDataModel.FK_Option_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Option" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_AclUser_Creator" Association="HuntingDataModel.FK_Question_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_AclUser_Editor" Association="HuntingDataModel.FK_Question_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_AclUser_Creator" Association="HuntingDataModel.FK_Questionnaire_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_AclUser_Editor" Association="HuntingDataModel.FK_Questionnaire_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_MapItemType" Association="HuntingDataModel.FK_Questionnaire_MapItemType">
+            <End Role="MapItemType" EntitySet="MapItemTypes" />
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Option_Question" Association="HuntingDataModel.FK_Option_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Option" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Questionnaire" Association="HuntingDataModel.FK_Question_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <EntitySet Name="Answers" EntityType="HuntingDataModel.Answer" />
+          <EntitySet Name="CheckIns" EntityType="HuntingDataModel.CheckIn" />
+          <AssociationSet Name="FK_CheckIn_AclUser_Creator" Association="HuntingDataModel.FK_CheckIn_AclUser_Creator">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_AclUser_Editor" Association="HuntingDataModel.FK_CheckIn_AclUser_Editor">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_CheckIn" Association="HuntingDataModel.FK_Answer_CheckIn">
+            <End Role="CheckIn" EntitySet="CheckIns" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_Option" Association="HuntingDataModel.FK_Answer_Option">
+            <End Role="Option" EntitySet="Options" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_Question" Association="HuntingDataModel.FK_Answer_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_MapItem" Association="HuntingDataModel.FK_CheckIn_MapItem">
+            <End Role="MapItem" EntitySet="MapItems" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Questionnaire" Association="HuntingDataModel.FK_CheckIn_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <EntitySet Name="Tracks" EntityType="HuntingDataModel.Track" />
+          <AssociationSet Name="FK_Track_AclUser" Association="HuntingDataModel.FK_Track_AclUser">
+            <End Role="AclUser" EntitySet="AclUsers" />
+            <End Role="Track" EntitySet="Tracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLocation_Track" Association="HuntingDataModel.FK_UserLocation_Track">
+            <End Role="Track" EntitySet="Tracks" />
+            <End Role="UserLocation" EntitySet="UserLocations" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="AclUserListItem" >
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="String" Name="Fullname" Nullable="false" />
+          <Property Type="Boolean" Name="IsDisabled" Nullable="false" />
+          <Property Type="Int32" Name="AccountType" Nullable="false" />
+          <Property Type="Int32" Name="MaxTerritoryCount" Nullable="false" />
+          <Property Type="Int32" Name="CurrentTerritoryCount" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="UserLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="LocationX" Type="Double" Nullable="false" />
+          <Property Name="LocationY" Type="Double" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AclUser" Relationship="HuntingDataModel.FK_UserLocation_AclUser_Creator" FromRole="UserLocation" ToRole="AclUser" />
+          <Property Name="TrackId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Track" Relationship="HuntingDataModel.FK_UserLocation_Track" FromRole="UserLocation" ToRole="Track" />
+        </EntityType>
+        <EntityType Name="UserMapPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationX" Type="Double" Nullable="false" />
+          <Property Name="LocationY" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="AclUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AclUser" Relationship="HuntingDataModel.FK_UserMapPoint_AclUser" FromRole="UserMapPoint" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_UserMapPoint_AclUser_Creator" FromRole="UserMapPoint" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_UserMapPoint_AclUser_Editor" FromRole="UserMapPoint" ToRole="AclUser" />
+          <NavigationProperty Name="Territory" Relationship="HuntingDataModel.FK_UserMapPoint_Territory" FromRole="UserMapPoint" ToRole="Territory" />
+          <NavigationProperty Name="UserMapPointShares" Relationship="HuntingDataModel.FK_UserMapPointShare_UserMapPoint" FromRole="UserMapPoint" ToRole="UserMapPointShare" />
+        </EntityType>
+        <Association Name="FK_UserLocation_AclUser_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserLocation" Role="UserLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLocation">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_AclUser">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserMapPoint" Role="UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_AclUser_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserMapPoint" Role="UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_AclUser_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.UserMapPoint" Role="UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPoint_Territory">
+          <End Type="HuntingDataModel.Territory" Role="Territory" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserMapPoint" Role="UserMapPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPoint">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapItem_MapItemType">
+          <End Type="HuntingDataModel.MapItemType" Role="MapItemType" Multiplicity="1" />
+          <End Type="HuntingDataModel.MapItem" Role="MapItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapItemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapItem">
+              <PropertyRef Name="MapItemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserMapPointShare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserMapPointId" Type="Int32" Nullable="false" />
+          <Property Name="AclUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AclUser" Relationship="HuntingDataModel.FK_UserMapPointShare_AclUser" FromRole="UserMapPointShare" ToRole="AclUser" />
+          <NavigationProperty Name="UserMapPoint" Relationship="HuntingDataModel.FK_UserMapPointShare_UserMapPoint" FromRole="UserMapPointShare" ToRole="UserMapPoint" />
+        </EntityType>
+        <Association Name="FK_UserMapPointShare_AclUser">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserMapPointShare" Role="UserMapPointShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPointShare">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMapPointShare_UserMapPoint">
+          <End Type="HuntingDataModel.UserMapPoint" Role="UserMapPoint" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserMapPointShare" Role="UserMapPointShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMapPoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMapPointShare">
+              <PropertyRef Name="UserMapPointId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MapArea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PolygonData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_MapArea_Creator" FromRole="MapArea" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_MapArea_Editor" FromRole="MapArea" ToRole="AclUser" />
+          <NavigationProperty Name="Territory" Relationship="HuntingDataModel.FK_MapArea_Territory" FromRole="MapArea" ToRole="Territory" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_MapArea_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.MapArea" Role="MapArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapArea">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapArea_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.MapArea" Role="MapArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapArea">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapArea_Territory">
+          <End Type="HuntingDataModel.Territory" Role="Territory" Multiplicity="1" />
+          <End Type="HuntingDataModel.MapArea" Role="MapArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapArea">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="TerritoryListItem" >
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="UserCount" Nullable="false" />
+          <Property Type="String" Name="Steward" Nullable="false" />
+          <Property Type="Int32" Name="ContactCount" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TerritoryUserContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="AclUserId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AclUser" Relationship="HuntingDataModel.FK_TerritoryUserContact_AclUser" FromRole="TerritoryUserContact" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_TerritoryUserContact_Creator" FromRole="TerritoryUserContact" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_TerritoryUserContact_Editor" FromRole="TerritoryUserContact" ToRole="AclUser" />
+          <NavigationProperty Name="Territory" Relationship="HuntingDataModel.FK_TerritoryUserContact_Territory" FromRole="TerritoryUserContact" ToRole="Territory" />
+        </EntityType>
+        <Association Name="FK_TerritoryUserContact_AclUser">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.TerritoryUserContact" Role="TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="AclUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.TerritoryUserContact" Role="TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.TerritoryUserContact" Role="TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TerritoryUserContact_Territory">
+          <End Type="HuntingDataModel.Territory" Role="Territory" Multiplicity="1" />
+          <End Type="HuntingDataModel.TerritoryUserContact" Role="TerritoryUserContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TerritoryUserContact">
+              <PropertyRef Name="TerritoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_Option_AclUser_Creator" FromRole="Option" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_Option_AclUser_Editor" FromRole="Option" ToRole="AclUser" />
+          <NavigationProperty Name="Question" Relationship="HuntingDataModel.FK_Option_Question" FromRole="Option" ToRole="Question" />
+          <NavigationProperty Name="Answers" Relationship="HuntingDataModel.FK_Answer_Option" FromRole="Option" ToRole="Answer" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionnaireId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionType" Type="Int32" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_Question_AclUser_Creator" FromRole="Question" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_Question_AclUser_Editor" FromRole="Question" ToRole="AclUser" />
+          <NavigationProperty Name="Options" Relationship="HuntingDataModel.FK_Option_Question" FromRole="Question" ToRole="Option" />
+          <NavigationProperty Name="Questionnaire" Relationship="HuntingDataModel.FK_Question_Questionnaire" FromRole="Question" ToRole="Questionnaire" />
+          <NavigationProperty Name="Answers" Relationship="HuntingDataModel.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questionnaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_Questionnaire_AclUser_Creator" FromRole="Questionnaire" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_Questionnaire_AclUser_Editor" FromRole="Questionnaire" ToRole="AclUser" />
+          <NavigationProperty Name="MapItemType" Relationship="HuntingDataModel.FK_Questionnaire_MapItemType" FromRole="Questionnaire" ToRole="MapItemType" />
+          <NavigationProperty Name="Questions" Relationship="HuntingDataModel.FK_Question_Questionnaire" FromRole="Questionnaire" ToRole="Question" />
+          <NavigationProperty Name="CheckIns" Relationship="HuntingDataModel.FK_CheckIn_Questionnaire" FromRole="Questionnaire" ToRole="CheckIn" />
+        </EntityType>
+        <Association Name="FK_Option_AclUser_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.Option" Role="Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Option">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Option_AclUser_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.Option" Role="Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Option">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_AclUser_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_AclUser_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_AclUser_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.Questionnaire" Role="Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_AclUser_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.Questionnaire" Role="Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_MapItemType">
+          <End Type="HuntingDataModel.MapItemType" Role="MapItemType" Multiplicity="1" />
+          <End Type="HuntingDataModel.Questionnaire" Role="Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapItemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="MapItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Option_Question">
+          <End Type="HuntingDataModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="HuntingDataModel.Option" Role="Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Option">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Questionnaire">
+          <End Type="HuntingDataModel.Questionnaire" Role="Questionnaire" Multiplicity="1" />
+          <End Type="HuntingDataModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StringValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FloatValue" Type="Double" />
+          <Property Name="IntValue" Type="Int32" />
+          <Property Name="BoolValue" Type="Boolean" />
+          <Property Name="OptionId" Type="Int32" />
+          <Property Name="CheckInId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CheckIn" Relationship="HuntingDataModel.FK_Answer_CheckIn" FromRole="Answer" ToRole="CheckIn" />
+          <NavigationProperty Name="Option" Relationship="HuntingDataModel.FK_Answer_Option" FromRole="Answer" ToRole="Option" />
+          <NavigationProperty Name="Question" Relationship="HuntingDataModel.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="CheckIn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapItemId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CheckTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SysUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysEditor" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AclUserCreator" Relationship="HuntingDataModel.FK_CheckIn_AclUser_Creator" FromRole="CheckIn" ToRole="AclUser" />
+          <NavigationProperty Name="AclUserEditor" Relationship="HuntingDataModel.FK_CheckIn_AclUser_Editor" FromRole="CheckIn" ToRole="AclUser" />
+          <NavigationProperty Name="Answers" Relationship="HuntingDataModel.FK_Answer_CheckIn" FromRole="CheckIn" ToRole="Answer" />
+          <NavigationProperty Name="MapItem" Relationship="HuntingDataModel.FK_CheckIn_MapItem" FromRole="CheckIn" ToRole="MapItem" />
+          <NavigationProperty Name="Questionnaire" Relationship="HuntingDataModel.FK_CheckIn_Questionnaire" FromRole="CheckIn" ToRole="Questionnaire" />
+        </EntityType>
+        <Association Name="FK_CheckIn_AclUser_Creator">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.CheckIn" Role="CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_AclUser_Editor">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.CheckIn" Role="CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="SysEditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_CheckIn">
+          <End Type="HuntingDataModel.CheckIn" Role="CheckIn" Multiplicity="1" />
+          <End Type="HuntingDataModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckIn">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="CheckInId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_Option">
+          <End Type="HuntingDataModel.Option" Role="Option" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Option">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_Question">
+          <End Type="HuntingDataModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="HuntingDataModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_MapItem">
+          <End Type="HuntingDataModel.MapItem" Role="MapItem" Multiplicity="1" />
+          <End Type="HuntingDataModel.CheckIn" Role="CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="MapItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Questionnaire">
+          <End Type="HuntingDataModel.Questionnaire" Role="Questionnaire" Multiplicity="0..1" />
+          <End Type="HuntingDataModel.CheckIn" Role="CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="CheckInListItem" >
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <Property Type="String" Name="QuestionnaireName" Nullable="true" />
+          <Property Type="DateTime" Name="CheckInTime" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SysCreator" Type="Int32" Nullable="false" />
+          <Property Name="SysCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AclUser" Relationship="HuntingDataModel.FK_Track_AclUser" FromRole="Track" ToRole="AclUser" />
+          <NavigationProperty Name="UserLocations" Relationship="HuntingDataModel.FK_UserLocation_Track" FromRole="Track" ToRole="UserLocation" />
+        </EntityType>
+        <Association Name="FK_Track_AclUser">
+          <End Type="HuntingDataModel.AclUser" Role="AclUser" Multiplicity="1" />
+          <End Type="HuntingDataModel.Track" Role="Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AclUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Track">
+              <PropertyRef Name="SysCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLocation_Track">
+          <End Type="HuntingDataModel.Track" Role="Track" Multiplicity="1" />
+          <End Type="HuntingDataModel.UserLocation" Role="UserLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Track">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLocation">
+              <PropertyRef Name="TrackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HuntingDataModelStoreContainer" CdmEntityContainer="HuntingEntities">
+          <EntitySetMapping Name="AclUsers">
+            <EntityTypeMapping TypeName="HuntingDataModel.AclUser">
+              <MappingFragment StoreEntitySet="AclUser">
+                <ScalarProperty Name="EmailCodeExpire" ColumnName="EmailCodeExpire" />
+                <ScalarProperty Name="EmailCode" ColumnName="EmailCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="MaxTerritoryCount" ColumnName="MaxTerritoryCount" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailInfoes">
+            <EntityTypeMapping TypeName="HuntingDataModel.EmailInfo">
+              <MappingFragment StoreEntitySet="EmailInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+                <ScalarProperty Name="ReceiverAddress" ColumnName="ReceiverAddress" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+                <ScalarProperty Name="SendState" ColumnName="SendState" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="HuntingDataModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="TimeFormatJS" ColumnName="TimeFormatJS" />
+                <ScalarProperty Name="DateFormatJS" ColumnName="DateFormatJS" />
+                <ScalarProperty Name="TimeFormat" ColumnName="TimeFormat" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="DateFormat" ColumnName="DateFormat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MapItems">
+            <EntityTypeMapping TypeName="HuntingDataModel.MapItem">
+              <MappingFragment StoreEntitySet="MapItem">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MapItemType" ColumnName="MapItemType" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MapItemTypes">
+            <EntityTypeMapping TypeName="HuntingDataModel.MapItemType">
+              <MappingFragment StoreEntitySet="MapItemType">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModelVersions">
+            <EntityTypeMapping TypeName="HuntingDataModel.ModelVersion">
+              <MappingFragment StoreEntitySet="ModelVersion">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Territories">
+            <EntityTypeMapping TypeName="HuntingDataModel.Territory">
+              <MappingFragment StoreEntitySet="Territory">
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="IsDemoTemplate" ColumnName="IsDemoTemplate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StewardId" ColumnName="StewardId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerritoryUsers">
+            <EntityTypeMapping TypeName="HuntingDataModel.TerritoryUser">
+              <MappingFragment StoreEntitySet="TerritoryUser">
+                <ScalarProperty Name="TerritoryUserRole" ColumnName="TerritoryUserRole" />
+                <ScalarProperty Name="AclUserId" ColumnName="AclUserId" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSessions">
+            <EntityTypeMapping TypeName="HuntingDataModel.UserSession">
+              <MappingFragment StoreEntitySet="UserSession">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Session" ColumnName="Session" />
+                <ScalarProperty Name="AclUserId" ColumnName="AclUserId" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLocations">
+            <EntityTypeMapping TypeName="HuntingDataModel.UserLocation">
+              <MappingFragment StoreEntitySet="UserLocation">
+                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMapPoints">
+            <EntityTypeMapping TypeName="HuntingDataModel.UserMapPoint">
+              <MappingFragment StoreEntitySet="UserMapPoint">
+                <ScalarProperty Name="AclUserId" ColumnName="AclUserId" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMapPointShares">
+            <EntityTypeMapping TypeName="HuntingDataModel.UserMapPointShare">
+              <MappingFragment StoreEntitySet="UserMapPointShare">
+                <ScalarProperty Name="AclUserId" ColumnName="AclUserId" />
+                <ScalarProperty Name="UserMapPointId" ColumnName="UserMapPointId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MapAreas">
+            <EntityTypeMapping TypeName="HuntingDataModel.MapArea">
+              <MappingFragment StoreEntitySet="MapArea">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="PolygonData" ColumnName="PolygonData" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerritoryUserContacts">
+            <EntityTypeMapping TypeName="HuntingDataModel.TerritoryUserContact">
+              <MappingFragment StoreEntitySet="TerritoryUserContact">
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="AclUserId" ColumnName="AclUserId" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="HuntingDataModel.Option">
+              <MappingFragment StoreEntitySet="Option">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="HuntingDataModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questionnaires">
+            <EntityTypeMapping TypeName="HuntingDataModel.Questionnaire">
+              <MappingFragment StoreEntitySet="Questionnaire">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MapItemTypeId" ColumnName="MapItemTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="HuntingDataModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="CheckInId" ColumnName="CheckInId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="BoolValue" ColumnName="BoolValue" />
+                <ScalarProperty Name="IntValue" ColumnName="IntValue" />
+                <ScalarProperty Name="FloatValue" ColumnName="FloatValue" />
+                <ScalarProperty Name="StringValue" ColumnName="StringValue" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckIns">
+            <EntityTypeMapping TypeName="HuntingDataModel.CheckIn">
+              <MappingFragment StoreEntitySet="CheckIn">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SysEditor" ColumnName="SysEditor" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="SysUpdated" ColumnName="SysUpdated" />
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+                <ScalarProperty Name="MapItemId" ColumnName="MapItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tracks">
+            <EntityTypeMapping TypeName="HuntingDataModel.Track">
+              <MappingFragment StoreEntitySet="Track">
+                <ScalarProperty Name="SysCreated" ColumnName="SysCreated" />
+                <ScalarProperty Name="SysCreator" ColumnName="SysCreator" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

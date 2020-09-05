@@ -1,0 +1,89 @@
+﻿@using HuntingModel.Localization
+@using HuntingModel.Enumeration
+@model HuntingModel.ViewModel.MapItemTypeModels.MapItemTypeListModel
+@{
+    ViewBag.Title = MapItemTypeRes.PAGE_TITLE_LIST;
+}
+
+<h2>@MapItemTypeRes.PAGE_TITLE_LIST</h2>
+<h4>@MapItemTypeRes.LABEL_LIST_INFO</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-data table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">@MapItemTypeRes.COLUMN_NAME</th>
+                    <th class="text-center">@MapItemTypeRes.COLUMN_DESCRIPTION</th>
+                    <th class="text-center">@GlobalRes.COLUMN_ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ItemTypeList.Count == 0)
+                {
+                    <tr class="no-data"><td colspan="3">@GlobalRes.LABEL_TABLE_EMPTY</td></tr>
+                }
+                else
+                {
+                    for (int index = 0; index < Model.ItemTypeList.Count; index++)
+                    {
+                        var item = Model.ItemTypeList[index];
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td class="edit text-center">
+                                @Html.ActionLink(MapItemTypeRes.BUTTON_QUESTIONNAIRES, "Index", "Questionnaire", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                                @Html.ActionLink(GlobalRes.BUTTON_UPDATE, "Update", "MapItemType", new { id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                <a href="#"data-toggle="modal" data-target="#delete-modal" data-id="@item.Id" class="btn btn-sm btn-default">@GlobalRes.BUTTON_DELETE</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @Html.ActionLink(GlobalRes.BUTTON_CREATE, "Create", "MapItemType", new { territoryId = Model.Id }, new { @class = "btn btn-info btn-md" })
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.Id }, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>
+<div>
+    <!-- Delete Modal -->
+    <div id="delete-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            @using (Html.BeginForm("Delete", "MapItemType", FormMethod.Post))
+            {
+                <!-- Modal content-->
+                <input type="hidden" id="delete-id" />
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@MapItemTypeRes.MODAL_TITLE_DELETE_TYPE</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="delete-type-id" name="id" />
+                        <p>@MapItemTypeRes.CONFIRM_DELETE_TYPE</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="invite-submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#delete-modal').on('show.bs.modal', function (e) {
+                var itemId = $(e.relatedTarget).data('id');
+                $(e.currentTarget).find('#delete-type-id').val(itemId);
+            });
+        });
+    </script>
+}

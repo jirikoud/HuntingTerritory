@@ -1,0 +1,121 @@
+﻿@using HuntingModel.ViewModel.CheckInModels
+@using HuntingModel.Enumeration
+@model CheckInUpdateModel
+
+@for (int index = 0; index < Model.QuestionList.Count; index++)
+{
+    var question = Model.QuestionList[index];
+    @Html.HiddenFor(model => model.QuestionList[index].Id)
+    @Html.HiddenFor(model => model.QuestionList[index].Name)
+    @Html.HiddenFor(model => model.QuestionList[index].Description)
+    @Html.HiddenFor(model => model.QuestionList[index].IsRequired)
+    @Html.HiddenFor(model => model.QuestionList[index].QuestionType)
+    if (question.QuestionType == QuestionTypeEnum.Checkbox)
+    {
+        <div class="form-group">
+            <label for="QuestionList_@(index)__BoolValue" class="col-md-4 control-label">
+                @question.Name
+                @if (question.Description != null)
+                {
+                    <a class="btn glyphicon glyphicon-question-sign" data-toggle="popover" data-content="@question.Description" data-placement="top"></a>
+                }
+            </label>
+            <div class="col-md-8">
+                @Html.CheckBoxFor(model => model.QuestionList[index].BoolValue, new { @class = "" })
+            </div>
+        </div>
+    }
+    if (question.QuestionType == QuestionTypeEnum.CheckboxList)
+    {
+        <div class="form-group">
+            <label class="col-md-4 control-label">
+                @question.Name
+                @if (question.Description != null)
+                {
+                    <a class="btn glyphicon glyphicon-question-sign" data-toggle="popover" data-content="@question.Description" data-placement="top"></a>
+                }
+            </label>
+            @for (int checkBoxIndex = 0; checkBoxIndex < question.CheckBoxList.Count; checkBoxIndex++)
+            {
+                <div class="@(checkBoxIndex > 0 ? "col-md-offset-4" : "") col-md-8">
+                    <div class="checkbox">
+                        @Html.HiddenFor(model => model.QuestionList[index].CheckBoxList[checkBoxIndex].Id)
+                        @Html.HiddenFor(model => model.QuestionList[index].CheckBoxList[checkBoxIndex].Text)
+                        <label>@Html.CheckBoxFor(model => model.QuestionList[index].CheckBoxList[checkBoxIndex].BoolValue, new { @class = "share-user" }) @Model.QuestionList[index].CheckBoxList[checkBoxIndex].Text</label>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    if (question.QuestionType == QuestionTypeEnum.DropDown)
+    {
+        <div class="form-group">
+            <label for="QuestionList_@(index)__OptionId" class="col-md-4 control-label">
+                @question.Name @(question.IsRequired ? "*" : "")
+                @if (question.Description != null)
+                {
+                    <a class="btn glyphicon glyphicon-question-sign" data-toggle="popover" data-content="@question.Description" data-placement="top"></a>
+                }
+            </label>
+            <div class="col-md-8">
+                @if (question.IsRequired)
+                {
+                    @Html.DropDownListFor(model => model.QuestionList[index].OptionId, question.OptionList, new { @class = "form-control" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.QuestionList[index].OptionId, question.OptionList, string.Empty, new { @class = "form-control" })
+                }
+                @Html.ValidationMessageFor(model => model.QuestionList[index].OptionId)
+            </div>
+        </div>
+    }
+    if (question.QuestionType == QuestionTypeEnum.Number)
+    {
+        <div class="form-group">
+            <label for="QuestionList_@(index)__StringValue" class="col-md-4 control-label">
+                @question.Name @(question.IsRequired ? "*" : "")
+                @if (question.Description != null)
+                {
+                    <a class="btn glyphicon glyphicon-question-sign" data-toggle="popover" data-content="@question.Description" data-placement="top"></a>
+                }
+            </label>
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.QuestionList[index].StringValue, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.QuestionList[index].StringValue)
+            </div>
+        </div>
+    }
+    if (question.QuestionType == QuestionTypeEnum.TextArea)
+    {
+        <div class="form-group">
+            <label for="QuestionList_@(index)__StringValue" class="col-md-4 control-label">
+                @question.Name @(question.IsRequired ? "*" : "")
+                @if (question.Description != null)
+                {
+                    <a class="btn glyphicon glyphicon-question-sign" data-toggle="popover" data-content="@question.Description" data-placement="top"></a>
+                }
+            </label>
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.QuestionList[index].StringValue, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.QuestionList[index].StringValue)
+            </div>
+        </div>
+    }
+    if (question.QuestionType == QuestionTypeEnum.TextBox)
+    {
+        <div class="form-group">
+            <label for="QuestionList_@(index)__StringValue" class="col-md-4 control-label">
+                @question.Name @(question.IsRequired ? "*" : "")
+                @if (question.Description != null)
+                {
+                    <a class="btn glyphicon glyphicon-question-sign" data-toggle="popover" data-content="@question.Description" data-placement="top"></a>
+                }
+            </label>
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.QuestionList[index].StringValue, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.QuestionList[index].StringValue)
+            </div>
+        </div>
+    }
+}

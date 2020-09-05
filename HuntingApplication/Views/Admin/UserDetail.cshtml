@@ -1,0 +1,120 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.AdminModels.AclUserDetailModel
+@{
+    ViewBag.Title = "UserDetail";
+}
+
+<h2>@AdminRes.PAGE_TITLE_USER_DETAIL - @Model.Fullname</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <tr>
+                <td><strong>@AdminRes.DETAIL_EMAIL</strong></td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td><strong>@AdminRes.DETAIL_ACCOUNT_TYPE</strong></td>
+                <td>@Model.AccountType</td>
+            </tr>
+            <tr>
+                <td><strong>@AdminRes.DETAIL_IS_DISABLED</strong></td>
+                <td>@Model.IsDisabledText</td>
+            </tr>
+            <tr>
+                <td><strong>@AdminRes.DETAIL_MAX_TERRITORY_COUNT</strong></td>
+                <td>@Model.MaxTerritoryCount</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @Html.ActionLink(GlobalRes.BUTTON_UPDATE, "UserUpdate", "Admin", new { id = Model.Id }, new { @class = "btn btn-info btn-md" })
+            <a href="#" class="btn btn-info btn-md" data-toggle="modal" data-target="#delete-modal">@GlobalRes.BUTTON_DELETE</a>
+            @if (Model.IsDisabled)
+            {
+                <a href="#" class="btn btn-info btn-md" data-toggle="modal" data-target="#enable-modal">@AdminRes.BUTTON_ENABLE</a>
+            }
+            else
+            {
+                <a href="#" class="btn btn-info btn-md" data-toggle="modal" data-target="#disable-modal">@AdminRes.BUTTON_DISABLE</a>
+            }
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Admin", new { }, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>
+
+<div>
+    <!-- Delete Modal -->
+    <div id="delete-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            @using (Html.BeginForm("UserDelete", "Admin", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.Id)
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@AdminRes.MODAL_TITLE_USER_DELETE</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>@AdminRes.CONFIRM_USER_DELETE</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Disable Modal -->
+    <div id="disable-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            @using (Html.BeginForm("UserDisable", "Admin", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.Id)
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@AdminRes.MODAL_TITLE_USER_DISABLE</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>@AdminRes.CONFIRM_USER_DISABLE</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Enable Modal -->
+    <div id="enable-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            @using (Html.BeginForm("UserEnable", "Admin", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.Id)
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@AdminRes.MODAL_TITLE_USER_ENABLE</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>@AdminRes.CONFIRM_USER_ENABLE</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

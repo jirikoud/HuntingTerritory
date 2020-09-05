@@ -1,0 +1,153 @@
+﻿@using HuntingModel.Localization
+@using HuntingModel.Enumeration
+@model HuntingModel.ViewModel.TerritoryModels.TerritoryPersonListModel
+@{
+    ViewBag.Title = TerritoryRes.PAGE_TITLE_PERSON_LIST;
+}
+
+<h2>@TerritoryRes.PAGE_TITLE_PERSON_LIST</h2>
+<h4>@TerritoryRes.LABEL_PERSON_LIST_INFO</h4>
+<hr />
+
+@using (Html.BeginForm("PersonList", "Territory", FormMethod.Post, new { id = "person-form" }))
+{
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-data table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">@TerritoryRes.COLUMN_USER_EMAIL</th>
+                    <th class="text-center">@TerritoryRes.COLUMN_USER_NAME</th>
+                    <th class="text-center">@TerritoryRes.COLUMN_USER_ROLE</th>
+                    <th class="text-center">@GlobalRes.COLUMN_ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.UserList.Count == 0)
+            {
+                    <tr class="no-data"><td colspan="6">@GlobalRes.LABEL_TABLE_EMPTY</td></tr>
+                }
+                else
+                {
+                    for (int index = 0; index < Model.UserList.Count; index++)
+                    {
+                        var item = Model.UserList[index];
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(model => model.UserList[index].Id)
+                                @item.Email
+                            </td>
+                            <td>@item.Fullname</td>
+                            <td>
+                                @if (item.Role == TerritoryUserRoleEnum.Invited)
+                                {
+                                    @item.RoleText
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(model => model.UserList[index].Role, item.RoleSelectList, new { @class = "form-control" })
+                                }
+                            </td>
+                            <td class="edit text-center">
+                                <a href="#" data-toggle="modal" data-target="#delete-modal" data-id="@Model.UserList[index].Id" class="btn btn-md btn-default">@GlobalRes.BUTTON_DELETE</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            <input type="submit" value="@TerritoryRes.BUTTON_SAVE_USER_LIST" class="btn btn-info btn-md" />
+            <a data-toggle="modal" data-target="#invite-modal" class="btn btn-md btn-default">@TerritoryRes.BUTTON_INVITE_USER</a>
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.Id }, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>
+}
+<div>
+    <!-- Invite Modal -->
+    <div id="invite-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <input type="hidden" id="invite-id" />
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@TerritoryRes.MODAL_TITLE_INVITE_USER</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="invite-form">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <p>@TerritoryRes.LABEL_USER_EMAIL <input type="text" name="email" id="invite-email" /></p>
+                        <div class="fade" id="invite-name-block">
+                            <p>@TerritoryRes.LABEL_USER_NAME <input type="text" name="name" id="invite-name" /></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="invite-submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal -->
+    <div id="delete-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            @using (Html.BeginForm("DeleteUser", "Territory", FormMethod.Post))
+            {
+                <!-- Modal content-->
+                <input type="hidden" id="delete-id" />
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@TerritoryRes.MODAL_TITLE_DELETE_USER</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="delete-user-id" name="id" />
+                        <input type="hidden" name="territoryId" value="@Model.Id" />
+                        <p>@TerritoryRes.CONFIRM_DELETE_USER</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="invite-submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#delete-modal').on('show.bs.modal', function (e) {
+                var itemId = $(e.relatedTarget).data('id');
+                $(e.currentTarget).find('#delete-user-id').val(itemId);
+            });
+            $('#invite-modal').on('shown.bs.modal', function (e) {
+                $(e.currentTarget).find('#invite-email').focus();
+            });
+            $('#invite-submit').on('click', function (e) {
+                var formData = $('#invite-form').serialize();
+                $.ajax({
+                    url: BASE_URL + 'Territory/InviteUser', method: "POST", data: formData, success: function (data) {
+                        if (data === "CREATE") {
+                            $('#invite-name-block').removeClass('fade');
+                            $('#invite-name').focus();
+                        }
+                        else if (data === "OK"){
+                            $('#invite-modal').modal('hide');
+                            window.location = BASE_URL + "Territory/PersonList/@Model.Id";
+                        }
+                        else {
+                            $('#invite-modal').modal('hide');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

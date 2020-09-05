@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HuntingModel.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AdminEmail" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jiri_koudelka@yahoo.co.uk</Value>
+    </Setting>
+    <Setting Name="AdminPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Saruman1</Value>
+    </Setting>
+    <Setting Name="AdminFullname" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Jiří Koudelka</Value>
+    </Setting>
+    <Setting Name="EmailCodeExpireHours" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">168</Value>
+    </Setting>
+    <Setting Name="GoogleMapsAPIKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AIzaSyCUXRhuDxMR5D_9MKP4SYMgRpbC-EG-fq4</Value>
+    </Setting>
+    <Setting Name="UserLocationLastMinutes" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">360</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

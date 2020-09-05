@@ -1,0 +1,118 @@
+﻿@using HuntingModel.Localization
+@using HuntingModel.SqlGenerator.Generators
+@using HuntingModel.ViewModel.CheckInModels
+@model CheckInPageModel
+@{
+    ViewBag.Title = CheckInRes.PAGE_TITLE_LIST;
+}
+<h2>@CheckInRes.PAGE_TITLE_LIST</h2>
+<h4>@CheckInRes.LABEL_LIST_INFO</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <p>@GlobalRes.LABEL_TABLE_TOTAL&nbsp;<b>@Model.ListModel.TotalCount</b></p>
+        </div>
+        <table class="table table-data table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="sort-title">@CheckInRes.COLUMN_CHECKIN_TIME</span>
+                        <span class="sort">
+                            @Html.SortingLink(CheckInFilter.SORT_CHECKIN_TIME, "Index", true, Model.Filter)
+                            @Html.SortingLink(CheckInFilter.SORT_CHECKIN_TIME, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span class="sort-title">@CheckInRes.COLUMN_USER_NAME</span>
+                        <span class="sort">
+                            @Html.SortingLink(CheckInFilter.SORT_USER_NAME, "Index", true, Model.Filter)
+                            @Html.SortingLink(CheckInFilter.SORT_USER_NAME, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span class="sort-title">@CheckInRes.COLUMN_QUESTIONNAIRE</span>
+                        <span class="sort">
+                            @Html.SortingLink(CheckInFilter.SORT_QUESTIONNAIRE, "Index", true, Model.Filter)
+                            @Html.SortingLink(CheckInFilter.SORT_QUESTIONNAIRE, "Index", false, Model.Filter)
+                        </span>
+                    </th>
+                    <th class="text-center">@GlobalRes.COLUMN_ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ListModel.ListItem.Count == 0)
+                {
+                    <tr class="no-data"><td colspan="4">@GlobalRes.LABEL_TABLE_EMPTY</td></tr>
+                }
+                else
+                {
+                    foreach (var item in Model.ListModel.ListItem)
+                    {
+                        <tr>
+                            <td>@item.CheckTime</td>
+                            <td>@item.UserName</td>
+                            <td>@item.QuestionnaireName</td>
+                            <td class="edit text-center">
+                                @Html.ActionLink(GlobalRes.BUTTON_DETAIL, "Detail", "CheckIn", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                                @if (Model.CanUpdate)
+                                {
+                                    @Html.ActionLink(GlobalRes.BUTTON_UPDATE, "Update", "CheckIn", new { id = item.Id }, new { @class = "btn btn-default btn-sm" })
+                                    <a href="#" data-toggle="modal" data-target="#delete-modal" data-id="@item.Id" class="btn btn-sm btn-default">@GlobalRes.BUTTON_DELETE</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @if (Model.Pager != null)
+        {
+            @Html.Partial("~/Views/Shared/PartialPager.cshtml", Model.Pager)
+        }
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group-vertical btn-block">
+            @Html.ActionLink(CheckInRes.BUTTON_CHECKIN, "Create", "CheckIn", new { mapItemId = Model.MapItemId }, new { @class = "btn btn-info btn-md" })
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.TerritoryId }, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>
+<div>
+    <!-- Delete Modal -->
+    <div id="delete-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            @using (Html.BeginForm("Delete", "CheckIn", FormMethod.Post))
+            {
+                <!-- Modal content-->
+                <input type="hidden" id="delete-id" />
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@CheckInRes.MODAL_TITLE_DELETE</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="delete-type-id" name="id" />
+                        <p>@CheckInRes.CONFIRM_DELETE</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="invite-submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#delete-modal').on('show.bs.modal', function (e) {
+                var itemId = $(e.relatedTarget).data('id');
+                $(e.currentTarget).find('#delete-type-id').val(itemId);
+            });
+        });
+    </script>
+}

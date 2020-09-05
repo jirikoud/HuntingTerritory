@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HuntingModel</RootNamespace>
     <AssemblyName>HuntingModel</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,21 +35,65 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.3.2.0.0\lib\net45\NLog.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.0\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,8 +101,140 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\LanguageCache.cs" />
+    <Compile Include="Cache\LocaleCache.cs" />
+    <Compile Include="Context\CheckInContext.cs" />
+    <Compile Include="Context\EmailContext.cs" />
+    <Compile Include="Context\LanguageContext.cs" />
+    <Compile Include="Context\MapItemContext.cs" />
+    <Compile Include="Context\MapItemTypeContext.cs" />
+    <Compile Include="Context\QuestionContext.cs" />
+    <Compile Include="Context\QuestionnaireContext.cs" />
+    <Compile Include="Context\TemplateContext.cs" />
     <Compile Include="Context\TerritoryContext.cs" />
-    <Compile Include="Context\HunterUserContext.cs" />
+    <Compile Include="Context\AclUserContext.cs" />
+    <Compile Include="Context\UserLocationContext.cs" />
+    <Compile Include="Context\UserPointContext.cs" />
+    <Compile Include="Database\AclUser.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AclUserListItem.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Answer.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CheckIn.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CheckInListItem.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EmailInfo.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EmailInfo.partial.cs" />
+    <Compile Include="Database\HuntingDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HuntingDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HuntingDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HuntingDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HuntingDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Language.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MapArea.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MapItem.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MapItemType.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ModelVersion.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Option.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Question.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Question.partial.cs" />
+    <Compile Include="Database\Questionnaire.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Territory.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TerritoryListItem.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TerritoryUser.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TerritoryUser.partial.cs" />
+    <Compile Include="Database\TerritoryUserContact.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Track.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserLocation.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserMapPoint.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserMapPointShare.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserSession.cs">
+      <DependentUpon>HuntingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enumeration\AccountTypeEnum.cs" />
+    <Compile Include="Enumeration\ActionTypeEnum.cs" />
+    <Compile Include="Enumeration\LoginResultEnum.cs" />
+    <Compile Include="Enumeration\QuestionTypeEnum.cs" />
+    <Compile Include="Enumeration\RegisterResultEnum.cs" />
+    <Compile Include="Enumeration\SendStateEnum.cs" />
+    <Compile Include="Enumeration\TerritoryUserRoleEnum.cs" />
+    <Compile Include="Infrastructure\Constants.cs" />
+    <Compile Include="Infrastructure\ContextUtils.cs" />
+    <Compile Include="Infrastructure\FilterUtils.cs" />
+    <Compile Include="Infrastructure\ItemListHolder.cs" />
+    <Compile Include="Infrastructure\ListPaging.cs" />
+    <Compile Include="Infrastructure\PasswordStorage.cs" />
+    <Compile Include="Localization\AccountRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\AdminRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\CheckInRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckInRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\GlobalRes.cs.Designer.cs">
+      <DependentUpon>GlobalRes.cs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Localization\GlobalRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,99 +245,228 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HomeRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\MapItemTypeRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapItemTypeRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\QuestionnaireRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuestionnaireRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\QuestionRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuestionRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Localization\TerritoryRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TerritoryRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\UserRes.Designer.cs">
+    <Compile Include="Localization\UserPointRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserRes.resx</DependentUpon>
+      <DependentUpon>UserPointRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Model\HunterUser.cs">
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HuntingDataModel.Context.cs">
+    <Compile Include="Localization\ValidationRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HuntingDataModel.Context.tt</DependentUpon>
+      <DependentUpon>ValidationRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Model\HuntingDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HuntingDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HuntingDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HuntingGround.cs">
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\MapItem.cs">
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ModelVersion.cs">
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Territory.cs">
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\TerritoryUser.cs">
-      <DependentUpon>HuntingDataModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Database\AclUser.partial.cs" />
+    <Compile Include="Model\API\AnswerCheckModel.cs" />
+    <Compile Include="Model\API\AnswerModel.cs" />
+    <Compile Include="Model\API\CheckInAnswerCheckBoxModel.cs" />
+    <Compile Include="Model\API\CheckInAnswerModel.cs" />
+    <Compile Include="Model\API\CheckInModel.cs" />
+    <Compile Include="Model\API\CreateCheckInModel.cs" />
+    <Compile Include="Model\API\CreateMapItemModel.cs" />
+    <Compile Include="Model\API\CreateUserPointModel.cs" />
+    <Compile Include="Model\API\LoginModel.cs" />
+    <Compile Include="Model\API\LoginResponseModel.cs" />
+    <Compile Include="Model\API\MapAreaModel.cs" />
+    <Compile Include="Model\API\MapItemModel.cs" />
+    <Compile Include="Model\API\MapItemTypeModel.cs" />
+    <Compile Include="Model\API\OptionModel.cs" />
+    <Compile Include="Model\API\QuestionModel.cs" />
+    <Compile Include="Model\API\QuestionnaireModel.cs" />
+    <Compile Include="Model\API\TerritoryDetailModel.cs" />
+    <Compile Include="Model\API\TerritoryListItem.cs" />
+    <Compile Include="Model\API\TerritoryListModel.cs" />
+    <Compile Include="Model\API\UserLocationModel.cs" />
+    <Compile Include="Model\API\UserLocationParamModel.cs" />
+    <Compile Include="Model\API\UserMapPointModel.cs" />
+    <Compile Include="Model\Template\TemplateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\HomeModels.cs" />
-    <Compile Include="ViewModel\PagerViewModel.cs" />
-    <Compile Include="ViewModel\TerritoryModels.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SqlGenerator\FilterBase.cs" />
+    <Compile Include="SqlGenerator\FulltextFilterBase.cs" />
+    <Compile Include="SqlGenerator\Generators\AclUserFilter.cs" />
+    <Compile Include="SqlGenerator\Generators\CheckInFilter.cs" />
+    <Compile Include="SqlGenerator\Generators\CheckInListGenerator.cs" />
+    <Compile Include="SqlGenerator\Generators\TerritoryListGenerator.cs" />
+    <Compile Include="SqlGenerator\Generators\AclUserListGenerator.cs" />
+    <Compile Include="SqlGenerator\Generators\TerritoryFilter.cs" />
+    <Compile Include="SqlGenerator\IGenerator.cs" />
+    <Compile Include="SqlGenerator\QueryColumn.cs" />
+    <Compile Include="SqlGenerator\QueryGenerator.cs" />
+    <Compile Include="SqlGenerator\ReturnField.cs" />
+    <Compile Include="SqlGenerator\SortQuery.cs" />
+    <Compile Include="ViewModel\AccountModels\ChangePasswordModel.cs" />
+    <Compile Include="ViewModel\AccountModels\ForgotPasswordModel.cs" />
+    <Compile Include="ViewModel\AccountModels\LanguageListModel.cs" />
+    <Compile Include="ViewModel\AccountModels\LanguageModel.cs" />
+    <Compile Include="ViewModel\AccountModels\LoginModel.cs" />
+    <Compile Include="ViewModel\AccountModels\ManageModel.cs" />
+    <Compile Include="ViewModel\AccountModels\RegisterModel.cs" />
+    <Compile Include="ViewModel\ActionModel.cs" />
+    <Compile Include="ViewModel\AdminModels\AclUserDetailModel.cs" />
+    <Compile Include="ViewModel\AdminModels\AclUserListItemModel.cs" />
+    <Compile Include="ViewModel\AdminModels\AclUserListModel.cs" />
+    <Compile Include="ViewModel\AdminModels\AclUserPageModel.cs" />
+    <Compile Include="ViewModel\AdminModels\AclUserUpdateModel.cs" />
+    <Compile Include="ViewModel\BaseItemListModel.cs" />
+    <Compile Include="ViewModel\BaseListModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInAnswerDetailModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInCheckBoxListItemModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInCheckListDetailModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInDetailModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInListItemModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInListModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInPageModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInQuestionModel.cs" />
+    <Compile Include="ViewModel\CheckInModels\CheckInUpdateModel.cs" />
+    <Compile Include="ViewModel\HomeModels\HomeViewModel.cs" />
+    <Compile Include="ViewModel\HomeModels\ScriptDefineModel.cs" />
+    <Compile Include="ViewModel\MapItemTypeModels\MapItemTypeListModel.cs" />
+    <Compile Include="ViewModel\MapItemTypeModels\MapItemTypeListItemModel.cs" />
+    <Compile Include="ViewModel\MapItemTypeModels\MapItemTypeUpdateModel.cs" />
+    <Compile Include="ViewModel\PagerModel.cs" />
+    <Compile Include="ViewModel\QuestionModels\OptionUpdateModel.cs" />
+    <Compile Include="ViewModel\QuestionModels\QuestionListItemModel.cs" />
+    <Compile Include="ViewModel\QuestionModels\QuestionListModel.cs" />
+    <Compile Include="ViewModel\QuestionModels\QuestionUpdateModel.cs" />
+    <Compile Include="ViewModel\QuestionnaireModels\QuestionnaireListItemModel.cs" />
+    <Compile Include="ViewModel\QuestionnaireModels\QuestionnaireListModel.cs" />
+    <Compile Include="ViewModel\QuestionnaireModels\QuestionnaireUpdateModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\CoordinateModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\MapAreaModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\MapAreaSaveModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\MapItemSaveModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\MapItemTypeModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\MapItemModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\MapSaveDataModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryDetailModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryListItemModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryListModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryMapSavedModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryPageModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryPersonListModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryUpdateModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryUserContactModel.cs" />
+    <Compile Include="ViewModel\TerritoryModels\TerritoryUserModel.cs" />
+    <Compile Include="ViewModel\UserPointModels\UserPointShareModel.cs" />
+    <Compile Include="ViewModel\UserPointModels\UserPointUpdateModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\HuntingDataModel.edmx">
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Database\HuntingDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HuntingDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="Model\HuntingDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+    <None Include="Database\HuntingDataModel.edmx.diagram">
       <DependentUpon>HuntingDataModel.edmx</DependentUpon>
-      <LastGenOutput>HuntingDataModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Model\HuntingDataModel.edmx.diagram">
-      <DependentUpon>HuntingDataModel.edmx</DependentUpon>
-    </None>
-    <None Include="Model\HuntingDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HuntingDataModel.edmx</DependentUpon>
-      <LastGenOutput>HuntingDataModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localization\AccountRes.cs.resx" />
+    <EmbeddedResource Include="Localization\AccountRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\AdminRes.cs.resx" />
+    <EmbeddedResource Include="Localization\AdminRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\CheckInRes.cs.resx" />
+    <EmbeddedResource Include="Localization\CheckInRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CheckInRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GlobalRes.cs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalRes.cs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Localization\HomeRes.cs.resx" />
     <EmbeddedResource Include="Localization\HomeRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HomeRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Localization\MapItemTypeRes.cs.resx" />
+    <EmbeddedResource Include="Localization\MapItemTypeRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapItemTypeRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\QuestionnaireRes.cs.resx" />
+    <EmbeddedResource Include="Localization\QuestionnaireRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuestionnaireRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\QuestionRes.cs.resx" />
+    <EmbeddedResource Include="Localization\QuestionRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuestionRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\TerritoryRes.cs.resx" />
     <EmbeddedResource Include="Localization\TerritoryRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TerritoryRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\UserRes.resx">
+    <EmbeddedResource Include="Localization\UserPointRes.cs.resx" />
+    <EmbeddedResource Include="Localization\UserPointRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>UserRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>UserPointRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\ValidationRes.cs.resx" />
+    <EmbeddedResource Include="Localization\ValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database\HuntingDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HuntingDataModel.edmx</DependentUpon>
+      <LastGenOutput>HuntingDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\HuntingDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HuntingDataModel.edmx</DependentUpon>
+      <LastGenOutput>HuntingDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

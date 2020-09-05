@@ -1,0 +1,193 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.TerritoryModels.TerritoryDetailModel
+@{
+    ViewBag.Title = TerritoryRes.PAGE_TITLE_UPDATE_MAP;
+}
+
+<h2>@TerritoryRes.PAGE_TITLE_UPDATE_MAP - @Model.Name</h2>
+<h4>@Model.Description</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+            <strong>@TerritoryRes.DETAIL_MAP</strong><br />
+            <div class="map-block">
+                <div id="map-canvas" class="canvas"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>@TerritoryRes.LABEL_LEGEND</h4>
+        <div class="panel-group" id="map-legend">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="header-map-area" data-toggle="collapse" data-parent="#map-legend" href="#collapse-area">
+                            @TerritoryRes.LABEL_LEGEND_MAP_AREA
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-area" class="panel-collapse collapse in">
+                    <div class="panel-body map-area-legend">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-md btn-default pull-right map-area-create" data-prefix="@TerritoryRes.PREFIX_AREA"><span class="glyphicon glyphicon-plus"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var mapItemType in Model.MapItemTypeList)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="header-map-item-@mapItemType.Id" data-toggle="collapse" data-parent="#map-legend" href="#collapse-@mapItemType.Id">
+                                @mapItemType.Name
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-@mapItemType.Id" class="panel-collapse collapse">
+                        <div class="panel-body map-item-legend-@mapItemType.Id">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-md btn-default pull-right map-item-create" data-prefix="mapitem" data-type="@mapItemType.Id"><span class="glyphicon glyphicon-plus"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="btn-group-vertical btn-block">
+            <button class="btn btn-md btn-info map-save" type="button">@TerritoryRes.BUTTON_SAVE</button>
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Territory", new { id = Model.Id }, new { @class = "btn btn-md btn-default" })
+        </div>
+        <div>
+            <span class="save-progress hidden">@TerritoryRes.LABEL_SAVE_IN_PROGRESS</span>
+            <span class="save-result"></span>
+        </div>
+    </div>
+</div>
+
+<div>
+    <!-- Rename Modal -->
+    <div id="rename-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <input type="hidden" id="rename-index" />
+            <input type="hidden" id="rename-type" />
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@TerritoryRes.MODAL_TITLE_RENAME</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@TerritoryRes.MODAL_RENAME_NAME<input type="text" id="rename-name" /></p>
+                    <p>@TerritoryRes.MODAL_RENAME_DESCRIPTION<input type="text" id="rename-description" /></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="rename-submit" class="btn btn-info">@GlobalRes.BUTTON_OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalRes.BUTTON_ABORT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts 
+{
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=@(ViewBag.GoogleMapKey)">
+</script>
+
+<script>
+    function huntingMapDataInit(mapAreaArray, mapItemArray, mapEditorSettings) {
+        mapEditorSettings.isEditMode = true;
+        @Html.Raw(Model.ToMapInitString(true, "mapAreaArray", "mapItemArray"))
+    }
+
+    function onHuntingMapAfterInit(map, bounds) {
+    }
+</script>
+
+<script src="~/Content/map-detail.js"></script>
+
+<script type="text/javascript">
+
+    function saveChanges() {
+        var saveButton = $('.map-save');
+        var saveProgress = $('.save-progress');
+        var saveResult = $('.save-result');
+        infoWindow.close(map);
+        saveProgress.removeClass('hidden');
+        saveButton.hide();
+        var saveObject = createSaveObject();
+
+        $.ajax({
+            type: "POST",
+            url: BASEPATH + "Territory/SaveMapAjax",
+            data: { id: @Model.Id, mapData: JSON.stringify(saveObject) },
+        }).done(function (data) {
+            saveProgress.addClass('hidden');
+            saveResult.html(data).hide().delay(500).fadeIn().delay(1000).fadeOut();
+
+            var mapDataDiv = $('#map-data-ids');
+            if (mapDataDiv.length > 0) {
+                var mapAreaIdString = mapDataDiv.data("area-ids").toString();
+                var mapAreaIdArray = mapAreaIdString != '' ? mapAreaIdString.split(",", -1) : [];
+                var mapItemIdString = mapDataDiv.data("item-ids").toString();
+                var mapItemIdArray = mapItemIdString != '' ? mapItemIdString.split(",", -1) : [];
+                if (updateMapItemIds(mapAreaIdArray, mapItemIdArray)) {
+                    saveButton.show();
+                }
+            } else {
+                saveButton.show();
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        google.maps.event.addDomListener(window, 'load', mapDetailInitialize);
+        $('.map-save').on("click", saveChanges);
+        $('#rename-modal').on('show.bs.modal', function (e) {
+            //get data-id attribute of the clicked element
+            var itemIndex = $(e.relatedTarget).data('index');
+            var itemType = $(e.relatedTarget).data('type');
+            var name = $(e.relatedTarget).closest('.map-legend-item').find('.name').html().trim();
+            var description = $(e.relatedTarget).closest('.map-legend-item').find('.description').val();
+            //populate the textbox
+            $(e.currentTarget).find('#rename-index').val(itemIndex);
+            $(e.currentTarget).find('#rename-type').val(itemType);
+            $(e.currentTarget).find('#rename-name').val(name);
+            $(e.currentTarget).find('#rename-description').val(description);
+        });
+        $('#rename-modal').on('shown.bs.modal', function (e) {
+            $(e.currentTarget).find('#rename-name').focus();
+        });
+        $('#rename-submit').on('click', function()
+        {
+            var itemIndex = $('#rename-index').val();
+            var itemType = $('#rename-type').val();
+            var name = $('#rename-name').val();
+            var description = $('#rename-description').val();
+            updateObjectName(itemType, itemIndex, name, description);
+            $('#rename-modal').modal('hide');
+        });
+    });
+
+    function deleteMapObjectClick() {
+        infoWindow.close(map);
+        var index = $(this).parent().data('index');
+        var typeIndex = $(this).parent().data("type");
+        var itemArray = findArrayByTypeIndex(typeIndex);
+        itemArray[index].shape.setMap(null);
+        itemArray.splice(index, 1);
+        updateLegend();
+    }
+
+</script>
+
+}

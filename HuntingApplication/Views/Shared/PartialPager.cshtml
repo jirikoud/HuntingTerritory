@@ -1,0 +1,26 @@
+﻿@model HuntingModel.ViewModel.PagerModel
+
+<nav>
+    <ul class="pagination">
+        @if (Model.FirstPage != null)
+        {
+            @Html.PagerLink("<<", ViewContext.RouteData.Values["action"].ToString(), Model.FirstPage.PageIndex)
+        }
+        @if (Model.PrevPage != null)
+        {
+            @Html.PagerLink("<", ViewContext.RouteData.Values["action"].ToString(), Model.PrevPage.PageIndex)
+        }
+        @foreach (var page in Model.CenterPager)
+        {
+            @Html.PagerLink((page.PageIndex + 1).ToString(), ViewContext.RouteData.Values["action"].ToString(), page.PageIndex, page.IsSelected)
+        }
+        @if (Model.NextPage != null)
+        {
+            @Html.PagerLink(">", ViewContext.RouteData.Values["action"].ToString(), Model.NextPage.PageIndex)
+        }
+        @if (Model.LastPage != null)
+        {
+            @Html.PagerLink(">>", ViewContext.RouteData.Values["action"].ToString(), Model.LastPage.PageIndex)
+        }
+    </ul>
+</nav>

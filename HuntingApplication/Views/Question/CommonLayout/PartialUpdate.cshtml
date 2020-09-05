@@ -1,0 +1,62 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.QuestionModels.QuestionUpdateModel
+
+<div class="row">
+    <div class="col-md-9">
+        <section>
+            @using (Html.BeginForm(Model.IsCreate ? "Create" : "Update", "Question", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "option-form" }))
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsCreate)
+                @Html.HiddenFor(model => model.QuestionnaireId)
+                @Html.CustomValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QuestionType, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.QuestionType, Model.QuestionTypeSelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.QuestionType)
+                    </div>
+                </div>
+                <div class="form-group hidden" id="required-row">
+                    @Html.LabelFor(model => model.IsRequired, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.IsRequired, new { @class = "" })
+                        @Html.ValidationMessageFor(model => model.IsRequired)
+                    </div>
+                </div>
+                <div class="form-group hidden" id="option-row">
+                    @Html.LabelFor(model => model.OptionList, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10" id="option-table">
+                        @Html.Partial("~/Views/Question/CommonLayout/OptionList.cshtml", Model)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-info" value="@(Model.IsCreate ? GlobalRes.BUTTON_CREATE : GlobalRes.BUTTON_UPDATE)" />
+                        @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Question", new { id = Model.QuestionnaireId}, new { @class = "btn btn-default btn-md" })
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-3">
+        <div class="btn-group-vertical btn-block">
+            @Html.ActionLink(GlobalRes.BUTTON_BACK, "Index", "Question", new { id = Model.QuestionnaireId}, new { @class = "btn btn-default btn-md" })
+        </div>
+    </div>
+</div>

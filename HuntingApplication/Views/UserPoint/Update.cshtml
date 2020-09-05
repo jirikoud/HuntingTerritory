@@ -1,0 +1,15 @@
+﻿@using HuntingModel.Localization
+@model HuntingModel.ViewModel.UserPointModels.UserPointUpdateModel
+@{
+    ViewBag.Title = UserPointRes.PAGE_TITLE_UPDATE;
+}
+
+<h2>@UserPointRes.PAGE_TITLE_UPDATE</h2>
+<h4>@UserPointRes.LABEL_UPDATE_INFO</h4>
+<hr />
+
+@Html.Partial("~/Views/UserPoint/CommonLayout/PartialUpdate.cshtml", Model)
+
+@section scripts {
+    @Html.Partial("~/Views/UserPoint/CommonLayout/PartialUpdateScripts.cshtml", Model)
+}

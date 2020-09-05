@@ -1,5 +1,6 @@
 ﻿@using HuntingModel.Localization
 @using Microsoft.AspNet.Identity
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -8,16 +9,16 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink(string.Format(GlobalRes.LABEL_WELCOME, User.Identity.GetUserName()), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(string.Format(AccountRes.LABEL_HELLO_FORMAT, User.Identity.GetUserName()), "Manage", "Account", routeValues: null, htmlAttributes: new { title = AccountRes.BUTTON_MANAGE })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">@UserRes.BUTTON_LOGOFF</a></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">@AccountRes.BUTTON_LOGOFF</a></li>
     </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink(UserRes.BUTTON_REGISTER, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink(UserRes.BUTTON_LOGIN, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        @*<li>@Html.ActionLink(AccountRes.BUTTON_REGISTER_LINK, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink(AccountRes.BUTTON_LOGIN_LINK, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

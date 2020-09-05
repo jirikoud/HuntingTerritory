@@ -1,35 +1,15 @@
 ﻿@using HuntingModel.Localization
-@model HuntingModel.ViewModel.TerritoryCreateViewModel
+@model HuntingModel.ViewModel.TerritoryModels.TerritoryUpdateModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = TerritoryRes.PAGE_TITLE_CREATE;
 }
 
-<h2>@TerritoryRes.TITLE_CREATE</h2>
+<h2>@TerritoryRes.PAGE_TITLE_CREATE</h2>
+<h4>@TerritoryRes.LABEL_CREATE_INFO</h4>
+<hr />
 
-@using (Html.BeginForm("Create", "Territory", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <h4>@TerritoryRes.SUBTITLE_CREATE</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="@TerritoryRes.BUTTON_CREATE" />
-        </div>
-    </div>
-}
+@Html.Partial("~/Views/Territory/CommonLayout/PartialUpdate.cshtml", Model)
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section scripts {
+    @Html.Partial("~/Views/Territory/CommonLayout/PartialUpdateScripts.cshtml", Model)
 }
