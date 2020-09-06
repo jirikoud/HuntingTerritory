@@ -1,6 +1,6 @@
 ﻿@using HuntingModel.Localization
 @model HuntingModel.ViewModel.TerritoryModels.TerritoryDetailModel
-@{ 
+@{
     ViewBag.Title = TerritoryRes.PAGE_TITLE_DETAIL;
 }
 
@@ -23,18 +23,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @for (int index = 0; index < Model.ContactList.Count; index++)
-                    {
-                        var item = Model.ContactList[index];
-                        <tr>
-                            <td>@item.UserName</td>
-                            <td>@item.Message</td>
-                            <td class="edit text-center">
-                                <a href="#" data-action="contact-accept" data-id="@item.Id" class="btn btn-md btn-default">@TerritoryRes.BUTTON_CONTACT_ACCEPT</a>
-                                <a href="#" data-action="contact-dismiss" data-id="@item.Id" class="btn btn-md btn-info">@TerritoryRes.BUTTON_CONTACT_DISMISS</a>
-                            </td>
-                        </tr>
-                    }
+                        @for (int index = 0; index < Model.ContactList.Count; index++)
+                        {
+                            var item = Model.ContactList[index];
+                            <tr>
+                                <td>@item.UserName</td>
+                                <td>@item.Message</td>
+                                <td class="edit text-center">
+                                    <a href="#" data-action="contact-accept" data-id="@item.Id" class="btn btn-md btn-default">@TerritoryRes.BUTTON_CONTACT_ACCEPT</a>
+                                    <a href="#" data-action="contact-dismiss" data-id="@item.Id" class="btn btn-md btn-info">@TerritoryRes.BUTTON_CONTACT_DISMISS</a>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

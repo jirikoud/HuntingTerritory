@@ -11,21 +11,21 @@
                 @Html.HiddenFor(model => model.MapItemId)
                 @Html.CustomValidationSummary(true)
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CheckInTime, new { @class = "col-md-4 control-label" })
+                    @Html.LabelFor(model => model.CheckTime, new { @class = "col-md-4 control-label" })
                     <div class="col-md-8">
-                        @Html.TextBoxFor(model => model.CheckInTime, new { @class = "form-control datetimepicker" })
-                        @Html.ValidationMessageFor(model => model.CheckInTime)
+                        @Html.TextBoxFor(model => model.CheckTime, new { @class = "form-control datetimepicker" })
+                        @Html.ValidationMessageFor(model => model.CheckTime)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Questionnaire, new { @class = "col-md-4 control-label" })
+                    @Html.LabelFor(model => model.QuestionnaireId, new { @class = "col-md-4 control-label" })
                     <div class="col-md-8">
-                        @Html.DropDownListFor(model => model.Questionnaire, Model.QuestionnaireSelectList, CheckInRes.QUESTIONNAIRE_EMPTY, new { @class = "form-control", id="questionnaire-select" })
-                        @Html.ValidationMessageFor(model => model.Questionnaire)
+                        @Html.DropDownListFor(model => model.QuestionnaireId, Model.QuestionnaireSelectList, CheckInRes.QUESTIONNAIRE_EMPTY, new { @class = "form-control", id="questionnaire-select" })
+                        @Html.ValidationMessageFor(model => model.QuestionnaireId)
                     </div>
                 </div>
                 <div id="questionnaire-block">
-                    @if (Model.Questionnaire.HasValue)
+                    @if (Model.QuestionnaireId.HasValue)
                     {
                         @Html.Partial("SelectQuestionnaireAjax", Model)
                     }
