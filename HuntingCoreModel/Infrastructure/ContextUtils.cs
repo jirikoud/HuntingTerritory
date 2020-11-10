@@ -6,6 +6,7 @@ using System.IO;
 using System.Globalization;
 using System.Web;
 using HuntingCoreModel.Database;
+using HuntingCoreModel.Database.Models;
 
 namespace HuntingCoreModel.Infrastructure
 {

@@ -124,4 +124,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\Extensions\" />
+  </ItemGroup>
+
 </Project>
