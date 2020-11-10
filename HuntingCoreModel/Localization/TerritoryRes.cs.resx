@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BUTTON_CONTACT" xml:space="preserve">
+    <value>Kontaktovat správce revíru</value>
+  </data>
+  <data name="BUTTON_CONTACT_ACCEPT" xml:space="preserve">
+    <value>Přijmout</value>
+  </data>
+  <data name="BUTTON_CONTACT_DISMISS" xml:space="preserve">
+    <value>Zamítnout</value>
+  </data>
+  <data name="BUTTON_CREATE" xml:space="preserve">
+    <value>Založit revír</value>
+  </data>
+  <data name="BUTTON_INVITE_USER" xml:space="preserve">
+    <value>Pozvat uživatele do revíru</value>
+  </data>
+  <data name="BUTTON_MAP_ITEM_TYPE_LIST" xml:space="preserve">
+    <value>Upravit seznam typů mapových bodů</value>
+  </data>
+  <data name="BUTTON_PERSON_LIST" xml:space="preserve">
+    <value>Seznam uživatelů</value>
+  </data>
+  <data name="BUTTON_SAVE" xml:space="preserve">
+    <value>Uložit změny</value>
+  </data>
+  <data name="BUTTON_SAVE_USER_LIST" xml:space="preserve">
+    <value>Uložit změny oprávnění</value>
+  </data>
+  <data name="BUTTON_UPDATE" xml:space="preserve">
+    <value>Upravit informace o revíru</value>
+  </data>
+  <data name="BUTTON_UPDATE_MAP" xml:space="preserve">
+    <value>Upravit mapu</value>
+  </data>
+  <data name="COLUMN_CONTACT_MESSAGE" xml:space="preserve">
+    <value>Zpráva</value>
+  </data>
+  <data name="COLUMN_CONTACT_NAME" xml:space="preserve">
+    <value>Uživatel</value>
+  </data>
+  <data name="COLUMN_NAME" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="COLUMN_STEWARD" xml:space="preserve">
+    <value>Správce</value>
+  </data>
+  <data name="COLUMN_USER_COUNT" xml:space="preserve">
+    <value>Počet uživatelů</value>
+  </data>
+  <data name="COLUMN_USER_EMAIL" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="COLUMN_USER_NAME" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="COLUMN_USER_ROLE" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="CONFIRM_DELETE_USER" xml:space="preserve">
+    <value>Skutečně chcete odstranit tohoto uživatele z revíru?</value>
+  </data>
+  <data name="DETAIL_CONTACT_MESSAGE" xml:space="preserve">
+    <value>Zpráva pro správce</value>
+  </data>
+  <data name="DETAIL_DESCRIPTION" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="DETAIL_IS_PUBLIC" xml:space="preserve">
+    <value>Veřejný?</value>
+  </data>
+  <data name="DETAIL_MAP" xml:space="preserve">
+    <value>Mapa</value>
+  </data>
+  <data name="DETAIL_NAME" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="ERROR_CONTACT" xml:space="preserve">
+    <value>Došlo k chybě během kontaktování správce revíru</value>
+  </data>
+  <data name="ERROR_CREATE" xml:space="preserve">
+    <value>Došlo k chybě během zakládání revíru</value>
+  </data>
+  <data name="ERROR_DELETE_USER" xml:space="preserve">
+    <value>Došlo k chybě během odstraňování uživatele z revíru</value>
+  </data>
+  <data name="ERROR_UPDATE" xml:space="preserve">
+    <value>Došlo k chybě během úpravy revíru</value>
+  </data>
+  <data name="LABEL_CONTACT_REQUEST" xml:space="preserve">
+    <value>Žádosti o připojení k revíru</value>
+  </data>
+  <data name="LABEL_CREATE_INFO" xml:space="preserve">
+    <value>Založí nový revír a stanoví vás jeho správcem</value>
+  </data>
+  <data name="LABEL_LEGEND" xml:space="preserve">
+    <value>Legenda</value>
+  </data>
+  <data name="LABEL_LEGEND_MAP_AREA" xml:space="preserve">
+    <value>Oblasti</value>
+  </data>
+  <data name="LABEL_LEGEND_USER_LOCATION" xml:space="preserve">
+    <value>Polohy uživatelů</value>
+  </data>
+  <data name="LABEL_LEGEND_USER_POINTS" xml:space="preserve">
+    <value>Uživatelské body</value>
+  </data>
+  <data name="LABEL_MAP_UPDATE_FAIL" xml:space="preserve">
+    <value>Došlo k chybě během úpravy mapy</value>
+  </data>
+  <data name="LABEL_MAP_UPDATE_SUCCESS" xml:space="preserve">
+    <value>Mapa byla úspěšně upravena</value>
+  </data>
+  <data name="LABEL_PERSON_LIST_INFO" xml:space="preserve">
+    <value>Zde můžete nastavit kdo má mít přístup k tomuto revíru</value>
+  </data>
+  <data name="LABEL_SAVE_IN_PROGRESS" xml:space="preserve">
+    <value>Ukládá se...</value>
+  </data>
+  <data name="LABEL_UPDATE_INFO" xml:space="preserve">
+    <value>Upravit informace o revíru</value>
+  </data>
+  <data name="LABEL_USER_EMAIL" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="LABEL_USER_NAME" xml:space="preserve">
+    <value>Celé jméno</value>
+  </data>
+  <data name="MAP_ITEM_TYPE_FEEDING" xml:space="preserve">
+    <value>Krmelce</value>
+  </data>
+  <data name="MAP_ITEM_TYPE_POOL" xml:space="preserve">
+    <value>Jezírka</value>
+  </data>
+  <data name="MODAL_RENAME_DESCRIPTION" xml:space="preserve">
+    <value>Nový popis</value>
+  </data>
+  <data name="MODAL_RENAME_NAME" xml:space="preserve">
+    <value>Nový název</value>
+  </data>
+  <data name="MODAL_TITLE_CONTACT" xml:space="preserve">
+    <value>Kontaktovat správce revíru</value>
+  </data>
+  <data name="MODAL_TITLE_DELETE_USER" xml:space="preserve">
+    <value>Odstranit uživatele z revíru</value>
+  </data>
+  <data name="MODAL_TITLE_INVITE_USER" xml:space="preserve">
+    <value>Přidat nového uživatele</value>
+  </data>
+  <data name="MODAL_TITLE_RENAME" xml:space="preserve">
+    <value>Přejmenovat objekt</value>
+  </data>
+  <data name="PAGE_TITLE_CREATE" xml:space="preserve">
+    <value>Založit revír</value>
+  </data>
+  <data name="PAGE_TITLE_DETAIL" xml:space="preserve">
+    <value>Detail revíru</value>
+  </data>
+  <data name="PAGE_TITLE_LIST" xml:space="preserve">
+    <value>Seznam veřejných revírů</value>
+  </data>
+  <data name="PAGE_TITLE_PERSON_LIST" xml:space="preserve">
+    <value>Upravit seznam uživatelů</value>
+  </data>
+  <data name="PAGE_TITLE_UPDATE" xml:space="preserve">
+    <value>Upravit revír</value>
+  </data>
+  <data name="PAGE_TITLE_UPDATE_MAP" xml:space="preserve">
+    <value>Upravit mapu</value>
+  </data>
+  <data name="PAGE_TITLE_USER_POINT" xml:space="preserve">
+    <value>Uživatelský bod</value>
+  </data>
+  <data name="PREFIX_AREA" xml:space="preserve">
+    <value>Oblast</value>
+  </data>
+  <data name="SUCCESS_CONTACT" xml:space="preserve">
+    <value>Správce revíru byl kontaktován</value>
+  </data>
+  <data name="SUCCESS_CREATE" xml:space="preserve">
+    <value>Nový revír byl založen</value>
+  </data>
+  <data name="SUCCESS_DELETE_USER" xml:space="preserve">
+    <value>Uživatel byl vymazán z revíru</value>
+  </data>
+  <data name="SUCCESS_UPDATE" xml:space="preserve">
+    <value>Revír byl upraven</value>
+  </data>
+  <data name="TERRITORY_USER_ROLE_EDITOR" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="TERRITORY_USER_ROLE_INVITED" xml:space="preserve">
+    <value>Pozvaný</value>
+  </data>
+  <data name="TERRITORY_USER_ROLE_MEMBER" xml:space="preserve">
+    <value>Člen</value>
+  </data>
+</root>
