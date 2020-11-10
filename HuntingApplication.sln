@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingModel", "HuntingMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingWebJob", "HuntingWebJob\HuntingWebJob.csproj", "{F6DB045B-1119-4DC2-A38E-0E1924D2E9B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingCoreModel", "HuntingCoreModel\HuntingCoreModel.csproj", "{3813E8C0-5DB5-4F32-9A0A-361337807AFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HuntingCoreModel", "HuntingCoreModel\HuntingCoreModel.csproj", "{3813E8C0-5DB5-4F32-9A0A-361337807AFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntingWeb", "HuntingWeb\HuntingWeb.csproj", "{761CDA48-C5A6-4734-B84B-AC69E1722B25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3813E8C0-5DB5-4F32-9A0A-361337807AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3813E8C0-5DB5-4F32-9A0A-361337807AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3813E8C0-5DB5-4F32-9A0A-361337807AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{761CDA48-C5A6-4734-B84B-AC69E1722B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761CDA48-C5A6-4734-B84B-AC69E1722B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761CDA48-C5A6-4734-B84B-AC69E1722B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761CDA48-C5A6-4734-B84B-AC69E1722B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
