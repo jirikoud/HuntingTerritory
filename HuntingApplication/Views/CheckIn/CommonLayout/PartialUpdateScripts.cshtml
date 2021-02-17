@@ -4,10 +4,12 @@
     $(document).ready(function () {
         var questionBlock = $('#questionnaire-block');
 
-        $.datetimepicker.setLocale(LANG);
-        $('.datetimepicker').datetimepicker({
-            format: DATEFORMAT + ' ' + TIMEFORMAT,
-        });
+        if (jQuery().datetimepicker) {
+            $.datetimepicker.setLocale(LANG);
+            $('.datetimepicker').datetimepicker({
+                format: DATEFORMAT + ' ' + TIMEFORMAT,
+            });
+        }
 
         $('[data-toggle="popover"]').popover();
 
